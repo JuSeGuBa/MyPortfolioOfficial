@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton+SC&family=Cabin+Sketch:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto&display=swap");
+
+header {
+  margin: 0;
+}
+
+#headerMe {
+  top: 100px; /* Ajusta el valor negativo para acercarlo más al navbar */
+  background-color: transparent; /* Sin fondo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 900px;
+  height: 120px;
+  z-index: 10;
+  padding: 0 20px;
+  flex-wrap: wrap;
+  /* border: 3px solid #222;  */
+  border-radius: 12px;
+  /* box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1); */
+  transition: all 0.3s ease-in-out;
+}
+
+#headerMe .name,
+#headerMe .lastName {
+  color: #222; /* Texto oscuro */
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  transition: color 0.3s ease-in-out;
+  font-size: 1.5rem; /* Tamaño de fuente ajustado */
+}
+
+#headerMe .logo {
+  margin: -50px; /* Ajuste del margen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px; /* Ajuste para que el logo sea más grande */
+  overflow: hidden;
+}
+
+#headerMe .logo img {
+  width: 120px; /* Aumento el tamaño del logo */
+  height: 120px;
+  object-fit: cover;
+  background-color: transparent; /* Fondo transparente */
+  border-radius: 50%;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    background-color 0.3s ease-in-out,
+    z-index 0.3s ease-in-out;
+}
+
+#headerMe .logo img:hover {
+  transform: scale(1.1); /* Agranda más el logo */
+  /* box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.5); */
+  /* background-color: #fff; */
+  z-index: 20;
+}
+
+.name,
+.lastName {
+  color: #222; /* Texto oscuro */
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-weight: bold;
+}
+
+.titulo-3d {
+  font-family: "Anton SC", sans-serif;
+  font-size: 5rem; /* Aumenta el tamaño de la fuente */
+  color: #222; /* Texto oscuro */
+  text-shadow:
+    2px 2px 5px rgba(0, 0, 0, 0.3),
+    -2px -2px 5px rgba(0, 0, 0, 0.3),
+    2px -2px 5px rgba(0, 0, 0, 0.3),
+    -2px 2px 5px rgba(0, 0, 0, 0.3);
+  transform: translateZ(0);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.titulo-3d::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: url("path_to_broken_line_texture.png") repeat-x; /* Usa la textura de línea rota */
+  background-size: contain;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.titulo-3d:hover {
+  transform: translateZ(20px);
+  /* color: #888; */
+  color: #c8c8c8;
+}
+
+.logo {
+  margin: -50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px; /* Proporción del logo */
+}
+
+.logo img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); */
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}

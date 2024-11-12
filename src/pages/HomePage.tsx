@@ -1,7 +1,13 @@
+import Header from "../components/Header";
+import Navbar from "../components/Navbar";
+import AboutMe from "./AboutPage";
+
 const HomePage = () => {
   return (
     <div>
-      <h1>HOMEPAGE</h1>
+      <Navbar />
+      <Header />
+      <AboutMe />
     </div>
   );
 };
