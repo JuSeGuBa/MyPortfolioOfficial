@@ -30,13 +30,14 @@ a:hover {
 }
 
 body {
-  font-family: "Anton SC", sans-serif;
+  font-family: "EB Garamond", serif;
+  /* font-family: "Anton SC", sans-serif; */
   margin: 0;
   padding: 0;
-  display: flex;
+  /* display: flex; */
   place-items: center;
   flex-direction: column;
-  min-width: 320px;
+  /* min-width: 320px; */
   min-height: 100vh;
   background-image: url("/src/assets/images/paper.jpg"); /* Ruta correcta de la imagen */
   background-size: cover; /* La imagen cubre toda la pantalla */
@@ -47,10 +48,10 @@ body {
 }
 
 .main-container {
-  width: 1000px;
-  max-width: 100%; /* Controla el tamaño máximo de la "hoja" */
-  min-height: 100%; /* Asegura que el contenedor ocupe toda la altura */
-  height: 100vh; /* Ocupa toda la altura disponible */
+  width: 100%;
+  /* max-width: 100%; Controla el tamaño máximo de la "hoja" */
+  /* min-height: 100%; Asegura que el contenedor ocupe toda la altura */
+  /* height: 100vh; Ocupa toda la altura disponible */
   padding: 0px;
   margin: 0; /* Sin márgenes alrededor */
   margin-bottom: -21px; /* Ajuste según sea necesario */
@@ -83,7 +84,7 @@ button {
 }
 
 button:hover {
-  border-color: #646cff;
+  border-color: white;
 }
 
 button:focus,

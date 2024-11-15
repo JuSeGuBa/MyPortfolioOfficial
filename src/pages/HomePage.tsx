@@ -6,8 +6,16 @@ const HomePage = () => {
   return (
     <div>
       <Navbar />
-      <Header />
-      <AboutMe />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Header />
+        <AboutMe />
+      </div>
     </div>
   );
 };
