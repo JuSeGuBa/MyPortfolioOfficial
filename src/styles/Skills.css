@@ -1,0 +1,140 @@
+.skills-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.title-skills h1 {
+  text-align: left;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #3a3635;
+  margin-bottom: 80px;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.title-skills h1:hover {
+  transform: scale(1.1);
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.skill {
+  margin-bottom: 20px;
+}
+
+.skill-name {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #3a3635;
+  text-align: left;
+}
+
+.s {
+  font-size: 4rem;
+  color: #1848a0;
+  text-shadow:
+    -1px -1px 1px rgba(24, 72, 160, 0.7),
+    /* Sombra más suave */ 1px 1px 1px rgba(24, 72, 160, 0.7),
+    -2px -2px 2px rgba(24, 72, 160, 0.5),
+    2px 2px 2px rgba(24, 72, 160, 0.5); /* Múltiples capas de sombras para suavidad */
+}
+
+.progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  height: 20px;
+  width: 100%;
+}
+
+.progress-bar-inner {
+  height: 100%;
+  width: 0;
+  transition:
+    width 0.6s ease-in-out,
+    background-color 0.3s ease,
+    transform 0.3s ease;
+  border-radius: 10px;
+  background-color: var(--base-color);
+  position: relative;
+}
+
+.progress-bar-inner:hover {
+  background-color: var(--hover-color);
+  transform: scale(1.1);
+}
+
+.skill-percentage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+  color: #fff;
+  z-index: 1;
+}
+
+/* Colores para cada barra */
+.skills-list .skill:nth-child(1) .progress-bar-inner {
+  --base-color: #1848a0;
+  --hover-color: #efd81c;
+}
+
+.skills-list .skill:nth-child(2) .progress-bar-inner {
+  --base-color: #1848a0;
+  --hover-color: #18bcee;
+}
+
+.skills-list .skill:nth-child(3) .progress-bar-inner {
+  --base-color: #1848a0;
+  --hover-color: #007acd;
+}
+
+.skills-list .skill:nth-child(4) .progress-bar-inner {
+  --base-color: #1848a0;
+  --hover-color: #27ae60;
+}
+
+.skills-list .skill:nth-child(5) .progress-bar-inner {
+  --base-color: #1848a0;
+  --hover-color: #744ca5;
+}
+
+.skills-list .skill:nth-child(6) .progress-bar-inner {
+  --base-color: #1848a0;
+  --hover-color: #80bd00;
+}
+
+.skills-list .skill:nth-child(7) .progress-bar-inner {
+  --base-color: #1848a0;
+  --hover-color: #303030;
+}
+
+.skills-list .skill:nth-child(8) .progress-bar-inner {
+  --base-color: #1848a0;
+  --hover-color: #006fb9;
+}
+
+.skills-list .skill:nth-child(9) .progress-bar-inner {
+  --base-color: #1848a0;
+  --hover-color: #ee5f27;
+}
+
+@media (max-width: 768px) {
+  .skills-list {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .progress-bar {
+    height: 15px;
+  }
+}

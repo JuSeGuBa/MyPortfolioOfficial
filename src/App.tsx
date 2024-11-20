@@ -4,7 +4,7 @@ import router from "./routes/root";
 
 function App() {
   return (
-    <div className="main-container">
+    <div>
       <RouterProvider router={router} />
     </div>
   );

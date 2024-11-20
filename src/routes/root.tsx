@@ -2,7 +2,6 @@ import HomePage from "../pages/HomePage";
 import AboutPage from "../pages/AboutPage";
 import ProjectsPage from "../pages/ProjectsPage";
 import ContactPage from "../pages/ContactPage";
-import Navbar from "../components/Navbar";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -21,10 +20,6 @@ const router = createBrowserRouter([
   {
     path: "/contact",
     element: <ContactPage />,
-  },
-  {
-    path: "/navbar",
-    element: <Navbar />,
   },
 ]);
 

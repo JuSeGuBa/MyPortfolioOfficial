@@ -3,6 +3,7 @@ import "../styles/Header.css";
 const Header = () => {
   return (
     <header id="headerMe">
+      {/* /*{" "}
       <div className="name">
         <h1 className="titulo-3d">Front-end</h1>
       </div>
@@ -15,7 +16,9 @@ const Header = () => {
       </div>
       <div className="lastName">
         <h1 className="titulo-3d">Developer</h1>
-      </div>
+      </div>{" "}
+      */}
+      <img src="/public/sg.svg" alt="FrontendIMG" className="imageFrontened" />
     </header>
   );
 };

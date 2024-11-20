@@ -11,7 +11,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -30,40 +30,15 @@ a:hover {
 }
 
 body {
-  font-family: "EB Garamond", serif;
-  /* font-family: "Anton SC", sans-serif; */
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
-  /* display: flex; */
-  place-items: center;
-  flex-direction: column;
-  /* min-width: 320px; */
-  min-height: 100vh;
-  background-image: url("/src/assets/images/paper.jpg"); /* Ruta correcta de la imagen */
-  background-size: cover; /* La imagen cubre toda la pantalla */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* No se repite la imagen */
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.87);
-}
-
-.main-container {
-  width: 100%;
-  /* max-width: 100%; Controla el tamaño máximo de la "hoja" */
-  /* min-height: 100%; Asegura que el contenedor ocupe toda la altura */
-  /* height: 100vh; Ocupa toda la altura disponible */
-  padding: 0px;
-  margin: 0; /* Sin márgenes alrededor */
-  margin-bottom: -21px; /* Ajuste según sea necesario */
   display: flex;
-  flex-direction: column; /* Los elementos dentro estarán apilados verticalmente */
-  justify-content: center; /* Centra el contenido verticalmente */
-
-  /* Fondo consistente con la imagen */
-  background-image: inherit; /* Hereda la imagen de fondo del body */
-  background-size: cover; /* La imagen cubre toda el área */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  justify-content: center;
+  /* align-items: center; */
+  background-color: #ffffff;
+  min-height: 100vh;
+  color: rgba(255, 255, 255, 0.87);
 }
 
 h1 {
