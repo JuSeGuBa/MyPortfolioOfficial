@@ -1,0 +1,49 @@
+/* Estilo para el span con clase .c */
+.c {
+  font-size: 4rem;
+  color: #1848a0;
+  text-shadow:
+    -1px -1px 1px rgba(24, 72, 160, 0.7),
+    1px 1px 1px rgba(24, 72, 160, 0.7),
+    -2px -2px 2px rgba(24, 72, 160, 0.5),
+    2px 2px 2px rgba(24, 72, 160, 0.5); /* Múltiples capas de sombras para suavidad */
+}
+
+/* Estilo para el h1 con clase .h1-contact */
+.h1-contact {
+  transition: transform 0.3s ease;
+}
+
+.h1-contact:hover {
+  transform: scale(1.1); /* Aumenta el tamaño al pasar el mouse */
+}
+
+/* Estilo para los elementos con la clase .first-name */
+.firstName,
+.lastName,
+.company,
+.email,
+.message {
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.firstName:hover,
+.lastName:hover,
+.company:hover,
+.email:hover,
+.message:hover {
+  transform: scale(1.1);
+  color: #1848a0; /* Cambia el color al hacer hover */
+}
+
+.send {
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.send:hover {
+  transform: scale(1.1);
+}

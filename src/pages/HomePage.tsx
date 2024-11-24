@@ -1,6 +1,9 @@
 import Header from "../components/Header";
 import AboutMe from "./AboutPage";
-import Skills from "./skills";
+import Skills from "./Skills";
+import ProjectsPage from "./ProjectsPage";
+import ContactPage from "./ContactPage";
+import Footer from "../components/Footer";
 
 const HomePage = () => {
   return (
@@ -8,6 +11,9 @@ const HomePage = () => {
       <Header />
       <AboutMe />
       <Skills />
+      <ProjectsPage />
+      <ContactPage />
+      <Footer />
     </>
   );
 };

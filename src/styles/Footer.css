@@ -1,0 +1,32 @@
+.fooName {
+  color: #ffffff; /* Mantener el color blanco */
+  transition: none; /* Elimina cualquier transición */
+}
+
+.fooName:hover {
+  color: #ffffff; /* Mantiene el color blanco al hacer hover, sin cambios */
+}
+
+.instagram,
+.facebook,
+.linkendin {
+  color: inherit; /* Hereda el color del contenedor */
+  transition:
+    color 0.3s ease,
+    /* Transición para la opacidad */ transform 0.3s ease; /* Transición para el agrandamiento */
+}
+
+.instagram:hover {
+  color: #6f4ec1; /* Color morado de Instagram */
+  transform: scale(1.2); /* Agrandamiento al pasar el mouse */
+}
+
+.facebook:hover {
+  color: #4267b2; /* Azul de Facebook */
+  transform: scale(1.2); /* Agrandamiento al pasar el mouse */
+}
+
+.linkendin:hover {
+  color: #0077b5; /* Azul de LinkedIn */
+  transform: scale(1.2); /* Agrandamiento al pasar el mouse */
+}

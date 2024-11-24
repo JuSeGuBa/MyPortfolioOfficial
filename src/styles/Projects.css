@@ -1,0 +1,17 @@
+.p {
+  font-size: 4rem;
+  color: #1848a0;
+  text-shadow:
+    -1px -1px 1px rgba(24, 72, 160, 0.7),
+    /* Sombra más suave */ 1px 1px 1px rgba(24, 72, 160, 0.7),
+    -2px -2px 2px rgba(24, 72, 160, 0.5),
+    2px 2px 2px rgba(24, 72, 160, 0.5); /* Múltiples capas de sombras para suavidad */
+}
+
+.h1-projects {
+  transition: transform 0.3s ease; /* Agregamos la transición para ambas acciones */
+}
+
+.h1-projects:hover {
+  transform: scale(1.1);
+}
