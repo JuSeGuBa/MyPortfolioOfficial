@@ -15,3 +15,14 @@
 .h1-projects:hover {
   transform: scale(1.1);
 }
+
+.info {
+  max-width: 600px;
+}
+
+.context {
+  background-color: #1848a0;
+}
+.context:hover {
+  border: none;
+}

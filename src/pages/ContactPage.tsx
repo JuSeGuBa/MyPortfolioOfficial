@@ -42,7 +42,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="isolate bg-white flex items-center justify-center min-h-screen px-6 py-24 sm:py-32 lg:px-8">
+    <div className="isolate  flex items-center justify-center min-h-screen px-6 py-24 sm:py-32 lg:px-8">
       {/* Fondo decorativo */}
       <div
         aria-hidden="true"

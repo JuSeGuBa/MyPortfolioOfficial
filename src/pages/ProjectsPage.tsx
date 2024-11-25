@@ -12,8 +12,8 @@ const ProjectsPage = () => {
       <div className="flex justify-center">
         {/* Este div centra horizontalmente el carrusel */}
         <Carousel
-          transition={{ duration: 2 }}
-          className="rounded-xl max-w-[800px] h-[500px] transform transition-transform duration-400 ease-in-out hover:scale-105" // Aquí ajustamos la altura
+          transition={{ duration: 1 }}
+          className="rounded-xl max-w-[800px] h-[500px] transform transition-transform duration-400 ease-in-out hover:scale-105"
           prevArrow={({ handlePrev }) => (
             <IconButton
               variant="text"
@@ -67,28 +67,91 @@ const ProjectsPage = () => {
               {new Array(length).fill("").map((_, i) => (
                 <span
                   key={i}
-                  className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"}`}
+                  className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
+                    activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
+                  }`}
                   onClick={() => setActiveIndex(i)}
                 />
               ))}
             </div>
           )}
         >
-          <img
-            src="/public/foto.jpg"
-            alt="image 1"
-            className="h-full w-full object-cover rounded-xl transition-all" // Asegúrate de que las imágenes también tengan bordes redondeados
-          />
-          <img
-            src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
-            alt="image 2"
-            className="h-full w-full object-cover rounded-xl transition-all"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
-            alt="image 3"
-            className="h-full w-full object-cover rounded-xl transition-all"
-          />
+          {/* Primer elemento con video de fondo */}
+          <div className="relative h-full w-full flex items-center justify-center bg-gray-900 text-center rounded-xl overflow-hidden">
+            <video
+              autoPlay
+              loop
+              muted
+              className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
+            >
+              <source
+                src="https://www.w3schools.com/html/mov_bbb.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+            <div className="relative z-10 p-6">
+              <h2 className="text-3xl font-bold text-white mb-4">Project</h2>
+              <p className="info text-lg text-gray-200">
+                Here you can place information about the project and
+                technologies used.
+              </p>
+              <button className="context mt-6 px-4 py-2 bg-black text-white rounded-full hover:scale-105 transition-transform">
+                See project
+              </button>
+            </div>
+          </div>
+
+          {/* Segundo elemento (imagen existente) */}
+          <div className="relative h-full w-full flex items-center justify-center bg-gray-900 text-center rounded-xl overflow-hidden">
+            <video
+              autoPlay
+              loop
+              muted
+              className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
+            >
+              <source
+                src="https://www.w3schools.com/html/mov_bbb.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+            <div className="relative z-10 p-6">
+              <h2 className="text-3xl font-bold text-white mb-4">Project</h2>
+              <p className="info text-lg text-gray-200">
+                Here you can place information about the project and
+                technologies used.
+              </p>
+              <button className="context mt-6 px-4 py-2 bg-black text-white rounded-full hover:scale-105 transition-transform">
+                See project
+              </button>
+            </div>
+          </div>
+          {/* Tercer elemento (imagen existente) */}
+          <div className="relative h-full w-full flex items-center justify-center bg-gray-900 text-center rounded-xl overflow-hidden">
+            <video
+              autoPlay
+              loop
+              muted
+              className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
+            >
+              <source
+                src="https://www.w3schools.com/html/mov_bbb.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+            <div className="relative z-10 p-6">
+              <h2 className="text-3xl font-bold text-white mb-4">Project</h2>
+              <p className="info text-lg text-gray-200">
+                Here you can place information about the project and
+                technologies used.
+              </p>
+              <button className="context mt-6 px-4 py-2 bg-black text-white rounded-full hover:scale-105 transition-transform">
+                See project
+              </button>
+            </div>
+          </div>
         </Carousel>
       </div>
     </div>

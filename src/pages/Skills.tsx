@@ -6,13 +6,13 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { name: "JavaScript", level: 50 },
-  { name: "React", level: 80 },
-  { name: "TypeScript", level: 70 },
-  { name: "SQL", level: 20 },
-  { name: "Algoritmos", level: 25 },
-  { name: "NodeJs", level: 25 },
-  { name: "DOM", level: 40 },
+  { name: "JavaScript", level: 85 },
+  { name: "React", level: 90 },
+  { name: "TypeScript", level: 80 },
+  { name: "SQL", level: 40 },
+  { name: "Algoritmos", level: 50 },
+  { name: "NodeJs", level: 50 },
+  { name: "DOM", level: 80 },
   { name: "CSS", level: 90 },
   { name: "HTML", level: 90 },
 ];
