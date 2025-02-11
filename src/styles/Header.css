@@ -3,7 +3,7 @@
   background-image: url("/public/pixelcut-export.png");
 }
 
-.boton-flecha {
+.button-arrow {
   font-size: 5.3rem;
   position: absolute; /* Fija el botón en la pantalla */
   bottom: 1px; /* Distancia desde la parte inferior */
@@ -14,10 +14,9 @@
   transition: transform 0.3s ease;
 }
 
-.boton-flecha:focus,
-.boton-flecha:hover {
-  transform: scale(1.1); /* Agrandar un 5% */
-
+.button-arrow:focus,
+.button-arrow:hover {
+  transform: scale(1.2);
   border: none;
   outline: none;
   box-shadow: none;

@@ -16,7 +16,7 @@ const Header = () => {
         alt="FrontendIMG"
         className="imageFrontened"
       />
-      <button className="boton-flecha" onClick={scrollToNextSection}>
+      <button className="button-arrow" onClick={scrollToNextSection}>
         <IoArrowDownSharp />
       </button>
     </header>
