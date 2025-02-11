@@ -6,59 +6,55 @@ import "../styles/Contact.css";
 
 const ContactPage = () => {
   const form = useRef<HTMLFormElement>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false); // Estado para el spinner
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!form.current) return; // Si no hay formulario, no hacemos nada
+    if (!form.current) return;
 
-    setIsLoading(true); // Activamos el spinner
+    const formData = new FormData(form.current);
+    const firstName = formData.get("user_firstname") as string;
+    const lastName = formData.get("user_lastname") as string;
+    const email = formData.get("user_email") as string;
+    const message = formData.get("message") as string;
+
+    // Validación de campos obligatorios
+    if (
+      !firstName.trim() ||
+      !lastName.trim() ||
+      !email.trim() ||
+      !message.trim()
+    ) {
+      alert("Por favor, completa todos los campos obligatorios.");
+      return;
+    }
+
+    setIsLoading(true);
 
     try {
       const result = await emailjs.sendForm(
-        "service_cg2jt4l", // Reemplaza con tu Service ID de EmailJS
-        "template_ren4i0b", // Reemplaza con tu Template ID de EmailJS
+        "service_yoapk2c", // Reemplázalo con tu Service ID de EmailJS
+        "template_ren4i0b", // Reemplázalo con tu Template ID de EmailJS
         form.current, // Referencia al formulario
-        "kfk7NXzjf2jUPIPPA" // Reemplaza con tu User ID de EmailJS
+        "kfk7NXzjf2jUPIPPA" // Reemplázalo con tu Public Key de EmailJS
       );
 
       console.log("Correo enviado:", result.text);
       alert("¡Correo enviado con éxito! 🚀");
+
+      form.current.reset();
     } catch (error) {
       console.error("Error al enviar el correo:", error);
-
-      // Manejo de errores con más detalle
-      if (error instanceof Error) {
-        alert(
-          `Hubo un error al enviar el correo. 😥\nDetalles: ${error.message}`
-        );
-      } else {
-        alert("Hubo un error al enviar el correo. 😥");
-      }
+      alert("Hubo un error al enviar el correo. 😥");
     } finally {
-      setIsLoading(false); // Desactivamos el spinner
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="isolate  flex items-center justify-center min-h-screen px-6 py-24 sm:py-32 lg:px-8">
-      {/* Fondo decorativo */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
-      >
-        <div
-          style={{
-            clipPath:
-              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-          }}
-        />
-      </div>
-
-      {/* Contenedor del formulario */}
+    <div className="isolate flex items-center justify-center min-h-screen px-6 py-24 sm:py-32 lg:px-8">
       <div className="max-w-[800px] w-full">
-        {/* Encabezado */}
         <div className="mx-0 max-w-full text-left">
           <h1 className="h1-contact text-[3.5rem] font-bold text-left text-gray-800 my-20 mx-auto max-w-[800px]">
             <span className="c">C</span>ontact
@@ -68,7 +64,6 @@ const ContactPage = () => {
           </p>
         </div>
 
-        {/* Formulario */}
         <form
           ref={form}
           onSubmit={handleSubmit}
@@ -80,14 +75,15 @@ const ContactPage = () => {
                 htmlFor="first-name"
                 className="block text-left font-semibold text-gray-900"
               >
-                First name
+                First name <sup>*</sup>
               </label>
               <input
                 id="first-name"
                 name="user_firstname"
                 type="text"
                 autoComplete="given-name"
-                className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-gray-600 placeholder:text-gray-400 focus:ring-1 focus:ring-[#1848a0] first-name-input"
+                required
+                className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-gray-600 placeholder:text-gray-400 focus:ring-1 focus:ring-[#1848a0]"
               />
             </div>
             <div className="lastName">
@@ -95,14 +91,15 @@ const ContactPage = () => {
                 htmlFor="last-name"
                 className="block text-left font-semibold text-gray-900"
               >
-                Last name
+                Last name <sup>*</sup>
               </label>
               <input
                 id="last-name"
                 name="user_lastname"
                 type="text"
                 autoComplete="family-name"
-                className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-gray-600 placeholder:text-black focus:ring-1 focus:ring-[#1848a0] last-name-input"
+                required
+                className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-gray-600 placeholder:text-black focus:ring-1 focus:ring-[#1848a0]"
               />
             </div>
             <div className="company sm:col-span-2">
@@ -117,7 +114,7 @@ const ContactPage = () => {
                 name="user_company"
                 type="text"
                 autoComplete="organization"
-                className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-gray-600 placeholder:text-gray-400 focus:ring-1 focus:ring-[#1848a0] company-input"
+                className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-gray-600 placeholder:text-gray-400 focus:ring-1 focus:ring-[#1848a0]"
               />
             </div>
             <div className="email sm:col-span-2">
@@ -125,14 +122,15 @@ const ContactPage = () => {
                 htmlFor="email"
                 className="block text-left font-semibold text-gray-900"
               >
-                Email
+                Email <sup>*</sup>
               </label>
               <input
                 id="email"
                 name="user_email"
                 type="email"
                 autoComplete="email"
-                className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-gray-600 placeholder:text-gray-400 focus:ring-1 focus:ring-[#1848a0] email-input"
+                required
+                className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-gray-600 placeholder:text-gray-400 focus:ring-1 focus:ring-[#1848a0]"
               />
             </div>
             <div className="message sm:col-span-2">
@@ -140,23 +138,28 @@ const ContactPage = () => {
                 htmlFor="message"
                 className="block text-left font-semibold text-gray-900"
               >
-                Message
+                Message <sup>*</sup>
               </label>
               <textarea
                 id="message"
                 name="message"
                 rows={4}
-                className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-gray-600 placeholder:text-gray-400 focus:ring-1 focus:ring-[#1848a0] message-input"
+                required
+                className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-gray-600 placeholder:text-gray-400 focus:ring-1 focus:ring-[#1848a0]"
               />
             </div>
           </div>
           <div className="mt-10">
             <button
               type="submit"
-              className="send block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus:ring-1 focus:ring-[#1848a0]"
+              disabled={isLoading}
+              className={`send block w-full rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm ${
+                isLoading
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-indigo-600 hover:bg-indigo-500"
+              } focus:ring-1 focus:ring-[#1848a0]`}
             >
-              {isLoading ? "Sending..." : "Let's Talk"}{" "}
-              {/* Cambiar texto según estado */}
+              {isLoading ? "Sending..." : "Let's Talk"}
             </button>
           </div>
         </form>

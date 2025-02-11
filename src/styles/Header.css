@@ -1,81 +1,24 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Anton+SC&family=Cabin+Sketch:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto&display=swap");
-
-#headerMe {
-  margin: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+.imageFrontened {
   width: 100%;
-  background-color: transparent;
-  transition: all 0.3s ease-in-out;
+  background-image: url("/public/pixelcut-export.png");
 }
 
-#headerMe .name,
-#headerMe .lastName {
-  color: #222;
-  font-weight: bold;
-  font-family: "Roboto", sans-serif;
-  font-size: 1.5rem;
-  padding: 0 20px;
-  transition: color 0.3s ease-in-out;
-}
-
-#headerMe .logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: -50px;
-}
-
-#headerMe .logo img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 50%;
-  background-color: transparent;
+.boton-flecha {
+  font-size: 5.3rem;
+  position: absolute; /* Fija el botón en la pantalla */
+  bottom: 1px; /* Distancia desde la parte inferior */
+  right: 41px; /* Distancia desde la parte derecha */
+  background: none;
+  padding: 0px;
+  color: #fff;
   transition: transform 0.3s ease;
 }
 
-#headerMe .logo img:hover {
-  transform: scale(1.1);
-  z-index: 20;
-}
+.boton-flecha:focus,
+.boton-flecha:hover {
+  transform: scale(1.1); /* Agrandar un 5% */
 
-.titulo-3d {
-  font-family: "Anton SC", sans-serif;
-  font-size: 5rem;
-  color: #222;
-  text-shadow:
-    2px 2px 5px rgba(0, 0, 0, 0.3),
-    -2px -2px 5px rgba(0, 0, 0, 0.3),
-    2px -2px 5px rgba(0, 0, 0, 0.3),
-    -2px 2px 5px rgba(0, 0, 0, 0.3);
-  transform: translateZ(0);
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.titulo-3d::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background: url("path_to_broken_line_texture.png") repeat-x;
-  background-size: contain;
-  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
-}
-
-.titulo-3d:hover {
-  transform: translateZ(20px);
-  color: #c8c8c8;
-} */
-
-.imageFrontened {
-  width: 100%;
-  background-image: url("../assets/images/sg.svg");
+  border: none;
+  outline: none;
+  box-shadow: none;
 }

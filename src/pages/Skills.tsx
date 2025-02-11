@@ -12,9 +12,9 @@ const skills: Skill[] = [
   { name: "SQL", level: 40 },
   { name: "Algoritmos", level: 50 },
   { name: "NodeJs", level: 50 },
-  { name: "DOM", level: 80 },
-  { name: "CSS", level: 90 },
-  { name: "HTML", level: 90 },
+  { name: "DOM", level: 90 },
+  { name: "CSS", level: 100 },
+  { name: "HTML", level: 100 },
 ];
 
 const Skills = () => {

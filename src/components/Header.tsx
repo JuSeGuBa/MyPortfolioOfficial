@@ -1,24 +1,24 @@
 import "../styles/Header.css";
-
+import { IoArrowDownSharp } from "react-icons/io5";
 const Header = () => {
+  const scrollToNextSection = () => {
+    // Encuentra la siguiente sección por su id
+    const nextSection = document.getElementById("about-section");
+    if (nextSection) {
+      // Desplazamiento suave hacia la siguiente sección
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <header id="headerMe">
-      {/* /*{" "}
-      <div className="name">
-        <h1 className="titulo-3d">Front-end</h1>
-      </div>
-      <div className="logo">
-        <img
-          src="/public/sinfondo(logo).png"
-          alt="logo large"
-          className="circle"
-        />
-      </div>
-      <div className="lastName">
-        <h1 className="titulo-3d">Developer</h1>
-      </div>{" "}
-      */}
-      <img src="/public/sg.svg" alt="FrontendIMG" className="imageFrontened" />
+      <img
+        src="/public/pixelcut-export.png"
+        alt="FrontendIMG"
+        className="imageFrontened"
+      />
+      <button className="boton-flecha" onClick={scrollToNextSection}>
+        <IoArrowDownSharp />
+      </button>
     </header>
   );
 };

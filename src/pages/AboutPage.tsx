@@ -3,7 +3,7 @@ import { Element } from "react-scroll";
 
 const AboutPage: React.FC = () => {
   return (
-    <div className="card-about-me">
+    <div className="card-about-me" id="about-section">
       <Element name="me-section" className="history">
         <h1 className="greeting">Hello</h1>
         <br />
