@@ -36,7 +36,7 @@ const Footer = () => {
               className="facebook  transition-opacity hover:opacity-100"
             >
               <img
-                src="/logos/facebook.svg" // Ruta al archivo dentro de la carpeta public
+                src={`${import.meta.env.BASE_URL}logos/facebook.svg`}
                 alt="Facebook logo"
                 className="h-6 w-6"
               />
@@ -50,7 +50,7 @@ const Footer = () => {
               className="instagram  transition-opacity hover:opacity-100"
             >
               <img
-                src="/logos/instagram.svg" // Ruta al archivo dentro de la carpeta public
+                src={`${import.meta.env.BASE_URL}logos/instagram.svg`}
                 alt="Instagram logo"
                 className="h-6 w-6"
               />
@@ -64,7 +64,7 @@ const Footer = () => {
               className="linkendin  transition-opacity hover:opacity-100"
             >
               <img
-                src="/logos/linkendin.svg" // Ruta al archivo dentro de la carpeta public
+                src={`${import.meta.env.BASE_URL}logos/linkendin.svg`} // Ajuste para que funcione en producción
                 alt="LinkedIn logo"
                 className="h-6 w-6"
               />

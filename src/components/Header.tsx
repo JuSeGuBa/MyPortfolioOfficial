@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <header id="headerMe">
       <img
-        src="/public/pixelcut-export.png"
+        src={`${import.meta.env.BASE_URL}pixelcut-export.png`}
         alt="FrontendIMG"
         className="imageFrontened"
       />
