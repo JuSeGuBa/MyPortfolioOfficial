@@ -108,32 +108,10 @@ const ProjectsPage = () => {
               autoPlay
               loop
               muted
-              className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
-            >
-              <source src="/public/videos/Facebook.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <div className="relative z-10 p-6">
-              <h2 className="text-3xl font-bold text-white mb-4">Project</h2>
-              <p className="info text-lg text-gray-200">
-                Here you can place information about the project and
-                technologies used.
-              </p>
-              <button className="context mt-6 px-4 py-2 bg-black text-white rounded-full hover:scale-105 transition-transform">
-                See project
-              </button>
-            </div>
-          </div>
-          {/* Tercer elemento (imagen existente) */}
-          <div className="relative h-full w-full flex items-center justify-center bg-gray-900 text-center rounded-xl overflow-hidden">
-            <video
-              autoPlay
-              loop
-              muted
-              className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
+              className="absolute top-0 left-0 w-full h-10px object-cover opacity-30"
             >
               <source
-                src="https://www.w3schools.com/html/mov_bbb.mp4"
+                src={`${import.meta.env.BASE_URL}videos/form.mp4`}
                 type="video/mp4"
               />
               Your browser does not support the video tag.
