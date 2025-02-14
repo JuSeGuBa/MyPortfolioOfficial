@@ -84,7 +84,10 @@ const ProjectsPage = () => {
               muted
               className="absolute top-0 left-0 w-full h-10px object-cover opacity-30"
             >
-              <source src="/public/videos/Facebook.webm" type="video/mp4" />
+              <source
+                src={`${import.meta.env.BASE_URL}videos/Facebook.mp4`}
+                type="video/mp4"
+              />
               Your browser does not support the video tag.
             </video>
             <div className="relative z-10 p-6">
@@ -107,10 +110,7 @@ const ProjectsPage = () => {
               muted
               className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
             >
-              <source
-                src="https://www.w3schools.com/html/mov_bbb.mp4"
-                type="video/mp4"
-              />
+              <source src="/public/videos/Facebook.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <div className="relative z-10 p-6">
