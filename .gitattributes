@@ -1,1 +1,2 @@
+.vercel/output/static/videos/form.mp4 filter=lfs diff=lfs merge=lfs -text
 public/videos/form.mp4 filter=lfs diff=lfs merge=lfs -text
