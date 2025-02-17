@@ -91,10 +91,12 @@ const ProjectsPage = () => {
               Your browser does not support the video tag.
             </video>
             <div className="relative z-10 p-6">
-              <h2 className="text-3xl font-bold text-white mb-4">Project</h2>
+              <h2 className="text-3xl font-bold text-white mb-8 ">Facebook</h2>
               <p className="info text-lg text-gray-200">
-                Here you can place information about the project and
-                technologies used.
+                I developed an interactive network that allows you to create,
+                update and delete posts. Developed with React, TypeScript and
+                TailwindCSS, it optimizes the user experience with a modern
+                interface and an efficient API.
               </p>
               <button className="context mt-6 px-4 py-2 bg-black text-white rounded-full hover:scale-105 transition-transform">
                 See project
@@ -103,24 +105,27 @@ const ProjectsPage = () => {
           </div>
 
           {/* Segundo elemento (imagen existente) */}
-          <div className="relative h-full w-full flex items-center justify-center bg-gray-900 text-center rounded-xl overflow-hidden">
+          <div className="relative h-full w-full flex items-center justify-center bg-[#1A1A1A] text-center rounded-xl overflow-hidden">
             <video
               autoPlay
               loop
               muted
-              className="absolute top-0 left-0 w-full h-10px object-cover opacity-30"
+              className="absolute top-0 left-0 w-full h-10px object-cover opacity-30 "
             >
               <source
-                src={`${import.meta.env.BASE_URL}videos/form.mp4`}
+                src={`${import.meta.env.BASE_URL}videos/form4.mp4`}
                 type="video/mp4"
               />
               Your browser does not support the video tag.
             </video>
             <div className="relative z-10 p-6">
-              <h2 className="text-3xl font-bold text-white mb-4">Project</h2>
+              <h2 className="text-3xl font-bold text-white mb-8">
+                Secure Login
+              </h2>
               <p className="info text-lg text-gray-200">
-                Here you can place information about the project and
-                technologies used.
+                I developed an authentication system that allows users to
+                register and log in securely, using React, TypeScript and JWT to
+                efficiently manage sessions.
               </p>
               <button className="context mt-6 px-4 py-2 bg-black text-white rounded-full hover:scale-105 transition-transform">
                 See project
