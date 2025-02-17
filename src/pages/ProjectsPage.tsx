@@ -113,8 +113,8 @@ const ProjectsPage = () => {
               className="absolute top-0 left-0 w-full h-10px object-cover opacity-30 "
             >
               <source
-                src={`${import.meta.env.BASE_URL}fondo/fondo2.png`}
-                // type="video/mp4"
+                src={`${import.meta.env.BASE_URL}videos/formshort.mp4`}
+                type="video/mp4"
               />
               Your browser does not support the video tag.
             </video>
