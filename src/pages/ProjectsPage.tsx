@@ -114,7 +114,7 @@ const ProjectsPage = () => {
             >
               <source
                 src={`${import.meta.env.BASE_URL}fondo/fondo2`}
-                type="video/mp4"
+                // type="video/mp4"
               />
               Your browser does not support the video tag.
             </video>
