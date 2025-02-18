@@ -2,6 +2,12 @@ import "../styles/Projects.css";
 import { Carousel, IconButton } from "@material-tailwind/react";
 
 const ProjectsPage = () => {
+  const handlelinkFacebook = () => {
+    window.open("https://facebook-project-seven.vercel.app/#");
+  };
+  const handlelinkLogin = () => {
+    window.open("https://registration-five-brown.vercel.app/");
+  };
   return (
     <div>
       {/* Título ajustado */}
@@ -20,7 +26,18 @@ const ProjectsPage = () => {
               color="white"
               size="lg"
               onClick={handlePrev}
-              className="!absolute top-2/4 left-4 -translate-y-2/4 transform transition-transform duration-400 ease-in-out hover:scale-110"
+              style={{
+                boxShadow: "none",
+                outline: "none",
+                border: "none",
+                WebkitTapHighlightColor: "transparent", // Quita el resaltado en dispositivos táctiles
+              }}
+              onFocus={(e) => (e.target.style.boxShadow = "none")} // Asegura que no tenga sombra al enfocarse
+              onMouseDown={(e) => {
+                e.preventDefault(); // Previene el estado activo
+                (e.currentTarget as HTMLElement).style.boxShadow = "none";
+              }}
+              className=" !absolute top-2/4 left-4 -translate-y-2/4 transform transition-transform duration-400 ease-in-out hover:scale-110"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +61,18 @@ const ProjectsPage = () => {
               color="white"
               size="lg"
               onClick={handleNext}
-              className="!absolute top-2/4 !right-4 -translate-y-2/4 transform transition-transform duration-400 ease-in-out hover:scale-110"
+              style={{
+                boxShadow: "none",
+                outline: "none",
+                border: "none",
+                WebkitTapHighlightColor: "transparent", // Quita el resaltado en dispositivos táctiles
+              }}
+              onFocus={(e) => (e.target.style.boxShadow = "none")} // Asegura que no tenga sombra al enfocarse
+              onMouseDown={(e) => {
+                e.preventDefault(); // Previene el estado activo
+                (e.currentTarget as HTMLElement).style.boxShadow = "none";
+              }}
+              className=" !absolute top-2/4 !right-4 -translate-y-2/4 transform transition-transform duration-400 ease-in-out hover:scale-110"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +95,7 @@ const ProjectsPage = () => {
               {new Array(length).fill("").map((_, i) => (
                 <span
                   key={i}
-                  className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
+                  className={` block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
                     activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
                   }`}
                   onClick={() => setActiveIndex(i)}
@@ -93,19 +121,21 @@ const ProjectsPage = () => {
             <div className="relative z-10 p-6">
               <h2 className="text-3xl font-bold text-white mb-8 ">Facebook</h2>
               <p className="info text-lg text-gray-200">
-                I developed an interactive network that allows you to create,
-                update and delete posts. Developed with React, TypeScript and
-                TailwindCSS, it optimizes the user experience with a modern
-                interface and an efficient API.
+                I developed an interactive network to create, update and delete
+                posts, using React, TypeScript and TailwindCSS, optimizing the
+                user experience with a modern interface and an efficient API.
               </p>
-              <button className="context mt-6 px-4 py-2 bg-black text-white rounded-full hover:scale-105 transition-transform">
+              <button
+                onClick={handlelinkFacebook}
+                className="buttons-links context mt-6 px-4 py-2 bg-black text-white rounded-full hover:scale-105 transition-transform"
+              >
                 See project
               </button>
             </div>
           </div>
 
           {/* Segundo elemento (imagen existente) */}
-          <div className="relative h-full w-full flex items-center justify-center bg-[#1A1A1A] text-center rounded-xl overflow-hidden">
+          <div className="relative h-full w-full flex items-center justify-center bg-black text-center rounded-xl overflow-hidden">
             <video
               autoPlay
               loop
@@ -127,7 +157,10 @@ const ProjectsPage = () => {
                 register and log in securely, using React, TypeScript and JWT to
                 efficiently manage sessions.
               </p>
-              <button className="context mt-6 px-4 py-2 bg-black text-white rounded-full hover:scale-105 transition-transform">
+              <button
+                onClick={handlelinkLogin}
+                className="buttons-links context mt-6 px-4 py-2 bg-[#1A1A1A] text-white rounded-full hover:scale-105 transition-transform"
+              >
                 See project
               </button>
             </div>

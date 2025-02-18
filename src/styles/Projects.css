@@ -26,3 +26,13 @@
 .context:hover {
   border: none;
 }
+
+.buttons-links:focus,
+.buttons-links:active {
+  outline: none;
+}
+
+.button-arrow:focus,
+.button-arrow:active {
+  box-shadow: none;
+}
