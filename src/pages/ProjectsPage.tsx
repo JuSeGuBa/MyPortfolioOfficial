@@ -34,11 +34,17 @@ const ProjectsPage = () => {
               size="lg"
               onClick={handlePrev}
               style={{
+                background: "none",
+                transition: "background 0.3s ease",
                 boxShadow: "none",
                 outline: "none",
                 border: "none",
                 WebkitTapHighlightColor: "transparent", // Quita el resaltado en dispositivos táctiles
               }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.background = "#14479C")
+              }
+              onMouseLeave={(e) => (e.currentTarget.style.background = "none")}
               onFocus={(e) => (e.target.style.boxShadow = "none")} // Asegura que no tenga sombra al enfocarse
               onMouseDown={(e) => {
                 e.preventDefault(); // Previene el estado activo
@@ -69,11 +75,17 @@ const ProjectsPage = () => {
               size="lg"
               onClick={handleNext}
               style={{
+                background: "none",
+                transition: "background 0.3s ease",
                 boxShadow: "none",
                 outline: "none",
                 border: "none",
                 WebkitTapHighlightColor: "transparent", // Quita el resaltado en dispositivos táctiles
               }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.background = "#14479C")
+              }
+              onMouseLeave={(e) => (e.currentTarget.style.background = "none")}
               onFocus={(e) => (e.target.style.boxShadow = "none")} // Asegura que no tenga sombra al enfocarse
               onMouseDown={(e) => {
                 e.preventDefault(); // Previene el estado activo
@@ -134,11 +146,10 @@ const ProjectsPage = () => {
               </p>
               <button
                 onClick={handlelinkFacebook}
-                className="buttons-links context mt-6 px-4 py-2 bg-black text-white rounded-full hover:scale-105 transition-transform"
+                className="buttons-links context mt-6 px-4 py-2 bg-black text-white rounded-full "
               >
                 See project
               </button>
-              <br />
               <button
                 onClick={handlelinkFacebookGithub}
                 className="buttons-github"
@@ -173,11 +184,10 @@ const ProjectsPage = () => {
               </p>
               <button
                 onClick={handlelinkLogin}
-                className="buttons-links context mt-6 px-4 py-2 bg-[#1A1A1A] text-white rounded-full hover:scale-105 transition-transform"
+                className="buttons-links context mt-6 px-4 py-2 bg-[#1A1A1A] text-white rounded-full "
               >
                 See project
               </button>
-              <br />
               <button
                 onClick={handlelinkLoginGithub}
                 className="buttons-github"

@@ -27,6 +27,14 @@
   border: none;
 }
 
+.buttons-links {
+  transition: transform 0.4s ease; /* Agregamos transición para el agrandado */
+}
+
+.buttons-links:hover {
+  transform: scale(1.1); /* Agrandado en hover */
+}
+
 .buttons-links:focus,
 .buttons-links:active {
   outline: none;
@@ -39,11 +47,15 @@
 
 .buttons-github {
   font-size: 1.3rem;
-  margin-top: 10px;
   background: none;
   border: none; /* Elimina cualquier borde */
   outline: none; /* Evita el contorno de enfoque */
   box-shadow: none;
+  transition: transform 0.4s ease; /* Agregamos transición para el agrandado */
+}
+
+.buttons-github:hover {
+  transform: scale(1.1); /* Agrandado en hover */
 }
 
 .buttons-github:focus,
