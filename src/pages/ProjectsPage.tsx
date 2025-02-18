@@ -1,7 +1,14 @@
 import "../styles/Projects.css";
 import { Carousel, IconButton } from "@material-tailwind/react";
+import { FaGithub } from "react-icons/fa";
 
 const ProjectsPage = () => {
+  const handlelinkFacebookGithub = () => {
+    window.open("https://github.com/JuSeGuBa/facebook_project");
+  };
+  const handlelinkLoginGithub = () => {
+    window.open("https://github.com/JuSeGuBa/Registration-Form");
+  };
   const handlelinkFacebook = () => {
     window.open("https://facebook-project-seven.vercel.app/#");
   };
@@ -131,6 +138,13 @@ const ProjectsPage = () => {
               >
                 See project
               </button>
+              <br />
+              <button
+                onClick={handlelinkFacebookGithub}
+                className="buttons-github"
+              >
+                <FaGithub />
+              </button>
             </div>
           </div>
 
@@ -162,6 +176,13 @@ const ProjectsPage = () => {
                 className="buttons-links context mt-6 px-4 py-2 bg-[#1A1A1A] text-white rounded-full hover:scale-105 transition-transform"
               >
                 See project
+              </button>
+              <br />
+              <button
+                onClick={handlelinkLoginGithub}
+                className="buttons-github"
+              >
+                <FaGithub />
               </button>
             </div>
           </div>

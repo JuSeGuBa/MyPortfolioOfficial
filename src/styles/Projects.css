@@ -36,3 +36,19 @@
 .button-arrow:active {
   box-shadow: none;
 }
+
+.buttons-github {
+  font-size: 1.3rem;
+  margin-top: 10px;
+  background: none;
+  border: none; /* Elimina cualquier borde */
+  outline: none; /* Evita el contorno de enfoque */
+  box-shadow: none;
+}
+
+.buttons-github:focus,
+.buttons-github:active {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
