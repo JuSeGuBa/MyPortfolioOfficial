@@ -84,7 +84,7 @@
 }
 
 /* Colores para cada barra */
-.skills-list .skill:nth-child(1) .progress-bar-inner {
+.skills-list .skill:nth-child(4) .progress-bar-inner {
   --base-color: #1848a0;
   --hover-color: #efd81c;
 }
@@ -99,32 +99,27 @@
   --hover-color: #007acd;
 }
 
-.skills-list .skill:nth-child(4) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #27ae60;
-}
-
-.skills-list .skill:nth-child(5) .progress-bar-inner {
+.skills-list .skill:nth-child(6) .progress-bar-inner {
   --base-color: #1848a0;
   --hover-color: #744ca5;
 }
 
-.skills-list .skill:nth-child(6) .progress-bar-inner {
+.skills-list .skill:nth-child(7) .progress-bar-inner {
   --base-color: #1848a0;
   --hover-color: #80bd00;
 }
 
-.skills-list .skill:nth-child(7) .progress-bar-inner {
+.skills-list .skill:nth-child(3) .progress-bar-inner {
   --base-color: #1848a0;
   --hover-color: #303030;
 }
 
-.skills-list .skill:nth-child(8) .progress-bar-inner {
+.skills-list .skill:nth-child(5) .progress-bar-inner {
   --base-color: #1848a0;
   --hover-color: #006fb9;
 }
 
-.skills-list .skill:nth-child(9) .progress-bar-inner {
+.skills-list .skill:nth-child(1) .progress-bar-inner {
   --base-color: #1848a0;
   --hover-color: #ee5f27;
 }

@@ -1,6 +1,6 @@
 .imageFrontened {
   width: 100%;
-  background-image: url(`${import.meta.env.BASE_URL}pixelcut-export.png`);
+  /* background-image: url(`${import.meta.env.BASE_URL}pixelcut-export.png`); */
 }
 
 .button-arrow {

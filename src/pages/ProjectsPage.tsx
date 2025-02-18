@@ -140,7 +140,7 @@ const ProjectsPage = () => {
               autoPlay
               loop
               muted
-              className="absolute top-0 left-0 w-full h-10px object-cover opacity-30 "
+              className="absolute top-0 left-0 w-full h-10px object-cover opacity-40 "
             >
               <source
                 src={`${import.meta.env.BASE_URL}videos/formshort.mp4`}
