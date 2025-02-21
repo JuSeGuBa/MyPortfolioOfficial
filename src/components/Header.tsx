@@ -12,7 +12,8 @@ const Header = () => {
   return (
     <header id="headerMe">
       <img
-        src={`${import.meta.env.BASE_URL}pixelcut-export.png`}
+        // src={`${import.meta.env.BASE_URL}pixelcut-export.png`}
+        src={`${import.meta.env.BASE_URL}lego2.jpg`}
         alt="FrontendIMG"
         className="imageFrontened"
       />
