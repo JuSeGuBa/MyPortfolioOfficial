@@ -6,8 +6,9 @@
 .button-arrow {
   font-size: 5.3rem;
   position: absolute; /* Fija el botón en la pantalla */
-  bottom: 1px; /* Distancia desde la parte inferior */
-  right: 41px; /* Distancia desde la parte derecha */
+  bottom: 0.1vh; /* Mantiene una distancia proporcional al alto de la pantalla */
+  right: 2.5vw; /* Mantiene la distancia proporcional al ancho de la pantalla */
+
   background: none;
   padding: 0px;
   color: #fff;
