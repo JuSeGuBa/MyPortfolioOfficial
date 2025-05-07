@@ -124,12 +124,12 @@ const ProjectsPage = () => {
           )}
         >
           {/* Primer elemento con video de fondo */}
-          <div className="relative h-full w-full flex items-center justify-center bg-gray-900 text-center rounded-xl overflow-hidden">
+          <div className="group relative h-full w-full flex items-center justify-center bg-gray-900 text-center rounded-xl overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105 opacity-none">
             <video
               autoPlay
               loop
               muted
-              className="absolute top-0 left-0 w-full h-10px object-cover opacity-30"
+              className="absolute top-0 left-0 w-full h-full object-cover opacity-30 transition-transform duration-300 ease-in-out group-hover:scale-105"
             >
               <source
                 src={`${import.meta.env.BASE_URL}videos/Facebook.mp4`}
@@ -138,7 +138,7 @@ const ProjectsPage = () => {
               Your browser does not support the video tag.
             </video>
             <div className="relative z-10 p-6">
-              <h2 className="text-3xl font-bold text-white mb-8 ">Facebook</h2>
+              <h2 className="text-3xl font-bold text-white mb-8">Facebook</h2>
               <p className="info text-lg text-gray-200">
                 I developed an interactive network to create, update and delete
                 posts, using React, TypeScript and TailwindCSS, optimizing the
@@ -146,7 +146,7 @@ const ProjectsPage = () => {
               </p>
               <button
                 onClick={handlelinkFacebook}
-                className="buttons-links context mt-6 px-4 py-2 bg-black text-white rounded-full "
+                className="buttons-links context mt-6 px-4 py-2 bg-black text-white rounded-full"
               >
                 See project
               </button>
