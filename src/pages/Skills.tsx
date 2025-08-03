@@ -8,11 +8,22 @@ interface Skill {
 const skills: Skill[] = [
   { name: "HTML", level: 100 },
   { name: "CSS", level: 100 },
-  { name: "DOM", level: 90 },
-  { name: "JavaScript", level: 85 },
-  { name: "React", level: 90 },
-  { name: "TypeScript", level: 80 },
-  { name: "NodeJs", level: 50 },
+  { name: "DOM", level: 100 },
+  { name: "JavaScript", level: 100 },
+  { name: "React", level: 100 },
+  { name: "TypeScript", level: 100 },
+  { name: "NodeJs", level: 60 },
+  { name: "Tailwind CSS", level: 100 },
+  { name: "Bootstrap", level: 100 },
+  { name: "CSS Modules", level: 80 },
+  { name: "PostCSS", level: 80 },
+  { name: "SCSS", level: 80 },
+  { name: "Angular", level: 100 },
+  { name: "Redux Toolkit", level: 90 },
+  { name: "Vite", level: 100 },
+  { name: "Git", level: 100 },
+  { name: "GitHub", level: 100 },
+  { name: "Bitbucket", level: 100 },
 ];
 
 const Skills = () => {
