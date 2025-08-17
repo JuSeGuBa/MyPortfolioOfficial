@@ -2,25 +2,31 @@ import "../styles/Skills.css";
 
 interface Skill {
   name: string;
-  level: number; // Porcentaje de habilidad (ej. 75)
+  level: number;
 }
 
 const skills: Skill[] = [
-  { name: "HTML", level: 100 },
-  { name: "CSS", level: 100 },
-  { name: "DOM", level: 100 },
-  { name: "JavaScript", level: 100 },
+  // Frameworks primero
   { name: "React", level: 100 },
-  { name: "TypeScript", level: 100 },
-  { name: "NodeJs", level: 60 },
-  { name: "Tailwind CSS", level: 100 },
-  { name: "Bootstrap", level: 100 },
-  { name: "CSS Modules", level: 80 },
-  { name: "PostCSS", level: 80 },
-  { name: "SCSS", level: 80 },
   { name: "Angular", level: 100 },
   { name: "Redux Toolkit", level: 90 },
   { name: "Vite", level: 100 },
+  { name: "Tailwind CSS", level: 100 },
+  { name: "Bootstrap", level: 100 },
+
+  // Lenguajes base
+  { name: "JavaScript", level: 100 },
+  { name: "TypeScript", level: 100 },
+  { name: "HTML", level: 100 },
+  { name: "CSS", level: 100 },
+  { name: "DOM", level: 100 },
+
+  // Preprocesadores y estilos
+  { name: "CSS Modules", level: 80 },
+  { name: "PostCSS", level: 80 },
+  { name: "SCSS", level: 80 },
+
+  // Herramientas de control de versiones
   { name: "Git", level: 100 },
   { name: "GitHub", level: 100 },
   { name: "Bitbucket", level: 100 },
