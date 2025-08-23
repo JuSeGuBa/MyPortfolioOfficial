@@ -1,16 +1,18 @@
 .imageFrontened {
   width: 100%;
-  /* background-image: url(`${import.meta.env.BASE_URL}pixelcut-export.png`); */
+  height: auto; /* asegura que la imagen escale proporcionalmente */
+  display: block; /* elimina posibles espacios extras */
 }
 
+/* Botón responsivo */
 .button-arrow {
-  font-size: 5.3rem;
-  position: absolute; /* Fija el botón en la pantalla */
-  bottom: 0.1vh; /* Mantiene una distancia proporcional al alto de la pantalla */
-  right: 2.5vw; /* Mantiene la distancia proporcional al ancho de la pantalla */
+  font-size: clamp(2rem, 6vw, 5.3rem); /* se adapta entre 2rem y 5.3rem */
+  position: absolute;
+  bottom: 1vh; /* mantiene proporción en pantallas pequeñas */
+  right: 3vw;
 
   background: none;
-  padding: 0px;
+  padding: 0;
   color: #fff;
   transition: transform 0.3s ease;
 }
@@ -21,4 +23,13 @@
   border: none;
   outline: none;
   box-shadow: none;
+}
+
+/* Ajustes extra para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .button-arrow {
+    font-size: clamp(1.5rem, 8vw, 3rem);
+    right: 4vw; /* un poquito más hacia adentro */
+    bottom: 2vh;
+  }
 }

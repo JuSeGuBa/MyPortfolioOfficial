@@ -6,7 +6,7 @@
     -1px -1px 1px rgba(24, 72, 160, 0.7),
     1px 1px 1px rgba(24, 72, 160, 0.7),
     -2px -2px 2px rgba(24, 72, 160, 0.5),
-    2px 2px 2px rgba(24, 72, 160, 0.5); /* Múltiples capas de sombras para suavidad */
+    2px 2px 2px rgba(24, 72, 160, 0.5);
 }
 
 /* Estilo para el h1 con clase .h1-contact */
@@ -15,10 +15,10 @@
 }
 
 .h1-contact:hover {
-  transform: scale(1.1); /* Aumenta el tamaño al pasar el mouse */
+  transform: scale(1.1);
 }
 
-/* Estilo para los elementos con la clase .first-name */
+/* Inputs y textarea */
 .firstName,
 .lastName,
 .company,
@@ -35,9 +35,10 @@
 .email:hover,
 .message:hover {
   transform: scale(1.1);
-  color: #1848a0; /* Cambia el color al hacer hover */
+  color: #1848a0;
 }
 
+/* Botón enviar */
 .send {
   transition:
     transform 0.3s ease,
@@ -50,4 +51,39 @@
 
 sup {
   color: #1848a0;
+}
+
+/* -------- Responsividad -------- */
+@media (max-width: 1024px) {
+  .c {
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .c {
+    font-size: 2.5rem;
+  }
+  .h1-contact {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .c {
+    font-size: 2rem;
+  }
+  .h1-contact {
+    font-size: 1.5rem;
+  }
+  .firstName,
+  .lastName,
+  .company,
+  .email,
+  .message {
+    transform: none !important; /* Evita que el hover rompa el layout en pantallas muy pequeñas */
+  }
+  .send:hover {
+    transform: none;
+  }
 }

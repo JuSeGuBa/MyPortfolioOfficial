@@ -58,7 +58,7 @@ const Footer = () => {
             {/* LinkedIn */}
             <Typography
               as="a"
-              href="https://www.linkedin.com/in/sebastian-guzman-57023b33a/"
+              href="https://www.linkedin.com/in/sebastian-guzman-038ba6359/"
               target="_blank"
               rel="noopener noreferrer"
               className="linkendin  transition-opacity hover:opacity-100"
