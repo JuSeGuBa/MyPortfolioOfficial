@@ -1,35 +1,84 @@
 .imageFrontened {
   width: 100%;
-  height: auto; /* asegura que la imagen escale proporcionalmente */
-  display: block; /* elimina posibles espacios extras */
+  height: auto;
+  display: block;
+  transition: filter 0.6s ease; /* transición suave */
 }
 
-/* Botón responsivo */
-.button-arrow {
-  font-size: clamp(2rem, 6vw, 5.3rem); /* se adapta entre 2rem y 5.3rem */
-  position: absolute;
-  bottom: 1vh; /* mantiene proporción en pantallas pequeñas */
-  right: 3vw;
+.imageFrontened:hover {
+  filter: brightness(1.05) contrast(1.05);
+}
 
-  background: none;
-  padding: 0;
+/* Botón responsivo con animación + diseño mejorado */
+.button-arrow {
+  font-size: clamp(2rem, 6vw, 5.3rem);
+  position: absolute;
+  bottom: 1vh;
+  right: 2vw; /* 🔹 más pegado a la derecha */
+
+  background: transparent;
+  backdrop-filter: blur(6px); /* efecto vidrio */
+  border: solid 2px white;
+  border-radius: 50%;
+  padding: 0.5rem;
+
   color: #fff;
-  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    text-shadow 0.3s ease;
+
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.6),
+    0 0 10px rgba(255, 255, 255, 0.4);
+
+  animation: bounce 2s infinite;
 }
 
 .button-arrow:focus,
 .button-arrow:hover {
   transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.2); /* resalta en hover */
   border: none;
   outline: none;
   box-shadow: none;
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.8),
+    0 0 14px rgba(255, 255, 255, 0.6);
 }
 
-/* Ajustes extra para pantallas muy pequeñas */
+/* Animación de rebote con un poco de escala */
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(6px) scale(1.05);
+  }
+  60% {
+    transform: translateY(3px) scale(1.03);
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas */
 @media (max-width: 480px) {
   .button-arrow {
     font-size: clamp(1.5rem, 8vw, 3rem);
-    right: 4vw; /* un poquito más hacia adentro */
+    right: 3vw; /* 🔹 un poco más al borde en móvil */
     bottom: 2vh;
+  }
+}
+
+/* Ajustes para pantallas grandes */
+@media (min-width: 1440px) {
+  .button-arrow {
+    right: 2.5vw; /* 🔹 más pegado en pantallas grandes */
+    bottom: 3vh;
   }
 }

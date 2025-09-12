@@ -34,10 +34,10 @@ const ContactPage = () => {
 
     try {
       const result = await emailjs.sendForm(
-        "service_yoapk2c", // Reemplázalo con tu Service ID de EmailJS
-        "template_ren4i0b", // Reemplázalo con tu Template ID de EmailJS
+        "service_yoapk2c", // ⚡ Cambia por tu Service ID
+        "template_ren4i0b", // ⚡ Cambia por tu Template ID
         form.current, // Referencia al formulario
-        "kfk7NXzjf2jUPIPPA" // Reemplázalo con tu Public Key de EmailJS
+        "kfk7NXzjf2jUPIPPA" // ⚡ Cambia por tu Public Key
       );
 
       console.log("Correo enviado:", result.text);
@@ -153,13 +153,20 @@ const ContactPage = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className={`send block w-full rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm ${
+              className={`send flex items-center justify-center gap-2 w-full rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm ${
                 isLoading
                   ? "bg-gray-400 cursor-not-allowed"
                   : "bg-indigo-600 hover:bg-indigo-500"
               } focus:ring-1 focus:ring-[#1848a0]`}
             >
-              {isLoading ? "Sending..." : "Let's Talk"}
+              {isLoading ? (
+                <>
+                  <span className="spinner"></span>
+                  Sending...
+                </>
+              ) : (
+                "Let's Talk"
+              )}
             </button>
           </div>
         </form>

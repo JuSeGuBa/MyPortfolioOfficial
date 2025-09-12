@@ -1,49 +1,43 @@
 .fooName {
-  color: #ffffff; /* Mantener el color blanco */
-  transition: none; /* Elimina cualquier transición */
+  color: #ffffff;
+  transition: color 0.3s ease;
 }
 
 .fooName:hover {
-  color: #ffffff; /* Mantiene el color blanco al hacer hover, sin cambios */
+  color: #ffffff; /* Mantiene blanco, pero con transición suave */
 }
 
-.instagram,
-.facebook,
-.linkendin {
-  color: inherit; /* Hereda el color del contenedor */
+.social-icon {
   transition:
-    color 0.3s ease,
-    transform 0.3s ease; /* Transición para color y agrandamiento */
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
-.instagram:hover {
-  color: #6f4ec1; /* Color morado de Instagram */
+.facebook:hover .social-icon {
   transform: scale(1.2);
+  opacity: 0.9;
 }
 
-.facebook:hover {
-  color: #4267b2; /* Azul de Facebook */
+.instagram:hover .social-icon {
   transform: scale(1.2);
+  opacity: 0.9;
 }
 
-.linkendin:hover {
-  color: #0077b5; /* Azul de LinkedIn */
+.linkendin:hover .social-icon {
   transform: scale(1.2);
+  opacity: 0.9;
 }
 
 /* -------- Responsividad -------- */
 @media (max-width: 768px) {
-  .instagram:hover,
-  .facebook:hover,
-  .linkendin:hover {
-    transform: scale(1.1); /* Escala más suave en tablets/móviles */
+  .social-icon:hover {
+    transform: scale(1.1);
   }
 }
 
 @media (max-width: 480px) {
-  .instagram:hover,
-  .facebook:hover,
-  .linkendin:hover {
-    transform: none; /* Sin agrandamiento en móviles pequeños */
+  .social-icon:hover {
+    transform: none;
+    opacity: 1;
   }
 }

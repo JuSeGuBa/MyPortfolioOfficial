@@ -1,28 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&family=Roboto:wght@400;500&display=swap");
 
 .card-about-me {
   width: 100%;
   max-width: 50rem;
   color: black;
-  padding: clamp(1rem, 4vw, 3rem); /* padding adaptable */
-  text-align: end;
-  font-size: clamp(1rem, 2vw, 1.3rem); /* fuente adaptable */
-  border: solid 8px;
+  padding: clamp(1rem, 4vw, 3rem);
+  text-align: justify; /* más elegante que end */
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-family: "Roboto", sans-serif;
+  border: 5px solid black; /* borde más ligero */
   border-radius: 15px;
   box-sizing: border-box;
-  margin: clamp(2rem, 8vw, 100px) auto; /* margen adaptable */
+  margin: clamp(2rem, 8vw, 100px) auto;
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
 }
 
 .card-about-me:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-6px); /* efecto flotante */
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.25);
 }
 
 .greeting {
-  font-size: clamp(2rem, 10vw, 7rem); /* se adapta entre móvil y desktop */
+  font-size: clamp(2rem, 10vw, 7rem);
   font-family: "Baloo 2", sans-serif;
   font-weight: 400;
   transition: transform 0.3s ease;
@@ -32,19 +33,23 @@
   transform: scale(1.1);
 }
 
+.name {
+  font-family: "Baloo 2", sans-serif;
+  font-size: clamp(1.8rem, 6vw, 4rem);
+}
+
 .S {
-  font-size: clamp(1.5rem, 8vw, 6rem);
-  color: #1848a0;
+  background: linear-gradient(135deg, #1848a0, #3a7bd5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-shadow:
-    -1px -1px 1px rgba(24, 72, 160, 0.7),
-    1px 1px 1px rgba(24, 72, 160, 0.7),
-    -2px -2px 2px rgba(24, 72, 160, 0.5),
-    2px 2px 2px rgba(24, 72, 160, 0.5);
+    -1px -1px 1px rgba(24, 72, 160, 0.4),
+    2px 2px 2px rgba(24, 72, 160, 0.4);
 }
 
 /* Ajuste fino en móviles muy pequeños */
 @media (max-width: 480px) {
   .card-about-me {
-    text-align: center; /* más legible en móvil */
+    text-align: center;
   }
 }

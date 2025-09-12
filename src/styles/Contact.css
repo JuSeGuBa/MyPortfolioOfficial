@@ -46,11 +46,33 @@
 }
 
 .send:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 sup {
   color: #1848a0;
+}
+
+/* Spinner animado */
+.spinner {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+  margin-right: 8px; /* espacio con el texto */
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* -------- Responsividad -------- */
@@ -81,7 +103,7 @@ sup {
   .company,
   .email,
   .message {
-    transform: none !important; /* Evita que el hover rompa el layout en pantallas muy pequeñas */
+    transform: none !important; /* Evita que el hover rompa el layout en pantallas pequeñas */
   }
   .send:hover {
     transform: none;

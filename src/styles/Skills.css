@@ -1,18 +1,16 @@
 .skills-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 1rem; /* pequeño respiro en móviles */
+  padding: 0 1rem;
 }
 
 .title-skills h1 {
   text-align: left;
-  font-size: clamp(2rem, 5vw, 3.5rem); /* adaptable */
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: bold;
   color: #3a3635;
   margin-bottom: clamp(2rem, 8vw, 80px);
-  transition:
-    color 0.3s ease,
-    transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .title-skills h1:hover {
@@ -21,10 +19,7 @@
 
 .skills-list {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(250px, 1fr)
-  ); /* se ajusta solo */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: clamp(15px, 3vw, 20px);
 }
 
@@ -55,25 +50,21 @@
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  height: clamp(12px, 2vw, 20px); /* altura adaptable */
+  height: clamp(12px, 2vw, 20px);
   width: 100%;
 }
 
 .progress-bar-inner {
   height: 100%;
-  width: 0;
   transition:
-    width 0.6s ease-in-out,
-    background-color 0.3s ease,
+    width 0.8s ease-in-out,
     transform 0.3s ease;
   border-radius: 10px;
-  background-color: var(--base-color);
   position: relative;
 }
 
 .progress-bar-inner:hover {
-  background-color: var(--hover-color);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .skill-percentage {
@@ -84,95 +75,15 @@
   font-size: clamp(0.7rem, 2vw, 0.9rem);
   color: #fff;
   z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* Colores para cada barra (mantengo tu orden original) */
-.skills-list .skill:nth-child(1) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #006fb9;
+.progress-bar-inner:hover .skill-percentage {
+  opacity: 1;
 }
 
-.skills-list .skill:nth-child(2) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #f40d4d;
-}
-
-.skills-list .skill:nth-child(3) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #007acd;
-}
-
-.skills-list .skill:nth-child(4) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #81b4f4;
-}
-
-.skills-list .skill:nth-child(5) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #00bcff;
-}
-
-.skills-list .skill:nth-child(6) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #6f2cf4;
-}
-
-.skills-list .skill:nth-child(7) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #efd81c;
-}
-
-.skills-list .skill:nth-child(8) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #744ca5;
-}
-
-.skills-list .skill:nth-child(9) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #ee5f27;
-}
-
-.skills-list .skill:nth-child(10) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #18bcee;
-}
-
-.skills-list .skill:nth-child(11) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #303030;
-}
-
-.skills-list .skill:nth-child(12) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #64419b;
-}
-
-.skills-list .skill:nth-child(13) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #dd3735;
-}
-
-.skills-list .skill:nth-child(14) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #bf4080;
-}
-
-.skills-list .skill:nth-child(15) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #f05133;
-}
-
-.skills-list .skill:nth-child(16) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #000000;
-}
-
-.skills-list .skill:nth-child(17) .progress-bar-inner {
-  --base-color: #1848a0;
-  --hover-color: #0052cc;
-}
-
-/* Ajustes extra en móviles muy pequeños */
+/* Responsive */
 @media (max-width: 480px) {
   .title-skills h1 {
     text-align: center;

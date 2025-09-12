@@ -5,7 +5,7 @@ const AboutPage: React.FC = () => {
   return (
     <div className="card-about-me" id="about-section">
       <Element name="me-section" className="history">
-        <h1 className="greeting">Hello</h1>
+        <h2 className="greeting">Hello</h2>
         <br />
         <h1 className="name">
           I'm <span className="S">S</span>ebastian

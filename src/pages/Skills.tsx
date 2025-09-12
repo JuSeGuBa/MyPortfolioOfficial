@@ -1,38 +1,80 @@
 import "../styles/Skills.css";
+import { useEffect, useState } from "react";
 
 interface Skill {
   name: string;
   level: number;
+  baseColor: string;
+  hoverColor: string;
 }
 
 const skills: Skill[] = [
-  // Frameworks primero
-  { name: "React", level: 100 },
-  { name: "Angular", level: 100 },
-  { name: "Redux Toolkit", level: 90 },
-  { name: "Vite", level: 100 },
-  { name: "Tailwind CSS", level: 100 },
-  { name: "Bootstrap", level: 100 },
+  { name: "React", level: 100, baseColor: "#1848a0", hoverColor: "#006fb9" },
+  { name: "Angular", level: 100, baseColor: "#dd1b16", hoverColor: "#f44336" },
+  {
+    name: "Redux Toolkit",
+    level: 90,
+    baseColor: "#764abc",
+    hoverColor: "#a87dd6",
+  },
+  { name: "Vite", level: 100, baseColor: "#ffc600", hoverColor: "#ffde73" },
+  {
+    name: "Tailwind CSS",
+    level: 100,
+    baseColor: "#06b6d4",
+    hoverColor: "#0ea5e9",
+  },
+  {
+    name: "Bootstrap",
+    level: 100,
+    baseColor: "#7952b3",
+    hoverColor: "#9d70d1",
+  },
 
-  // Lenguajes base
-  { name: "JavaScript", level: 100 },
-  { name: "TypeScript", level: 100 },
-  { name: "HTML", level: 100 },
-  { name: "CSS", level: 100 },
-  { name: "DOM", level: 100 },
+  {
+    name: "JavaScript",
+    level: 100,
+    baseColor: "#efd81c",
+    hoverColor: "#f0db4f",
+  },
+  {
+    name: "TypeScript",
+    level: 100,
+    baseColor: "#3178c6",
+    hoverColor: "#4c9be0",
+  },
+  { name: "HTML", level: 100, baseColor: "#e34c26", hoverColor: "#ff6b4a" },
+  { name: "CSS", level: 100, baseColor: "#264de4", hoverColor: "#5596f6" },
+  { name: "DOM", level: 100, baseColor: "#303030", hoverColor: "#555" },
 
-  // Preprocesadores y estilos
-  { name: "CSS Modules", level: 80 },
-  { name: "PostCSS", level: 80 },
-  { name: "SCSS", level: 80 },
+  {
+    name: "CSS Modules",
+    level: 80,
+    baseColor: "#43853d",
+    hoverColor: "#6fc46f",
+  },
+  { name: "PostCSS", level: 80, baseColor: "#dd3735", hoverColor: "#f0625d" },
+  { name: "SCSS", level: 80, baseColor: "#bf4080", hoverColor: "#e071a8" },
 
-  // Herramientas de control de versiones
-  { name: "Git", level: 100 },
-  { name: "GitHub", level: 100 },
-  { name: "Bitbucket", level: 100 },
+  { name: "Git", level: 100, baseColor: "#f05133", hoverColor: "#ff735c" },
+  { name: "GitHub", level: 100, baseColor: "#000000", hoverColor: "#333" },
+  {
+    name: "Bitbucket",
+    level: 100,
+    baseColor: "#0052cc",
+    hoverColor: "#287eff",
+  },
 ];
 
 const Skills = () => {
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    // Dispara animación al montar
+    const timer = setTimeout(() => setAnimate(true), 200);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="skills-container">
       <div className="title-skills">
@@ -47,7 +89,11 @@ const Skills = () => {
             <div className="progress-bar">
               <div
                 className="progress-bar-inner"
-                style={{ width: `${skill.level}%` }}
+                style={{
+                  width: animate ? `${skill.level}%` : "0%",
+                  transitionDelay: `${index * 150}ms`, // efecto stagger
+                  background: `linear-gradient(90deg, ${skill.baseColor}, ${skill.hoverColor})`,
+                }}
               >
                 <span className="skill-percentage">{skill.level}%</span>
               </div>

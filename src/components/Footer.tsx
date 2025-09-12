@@ -16,7 +16,7 @@ const Footer = () => {
             &copy; {currentYear}{" "}
             <a
               href="#"
-              className="fooName h-6 w-6"
+              className="fooName h-6 w-6 font-semibold"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -26,19 +26,20 @@ const Footer = () => {
           </Typography>
 
           {/* Social Media Icons */}
-          <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
+          <div className="flex gap-6 sm:gap-8 text-blue-gray-900 sm:justify-center">
             {/* Facebook */}
             <Typography
               as="a"
               href="https://www.facebook.com/profile.php?id=100062536004855&locale=es_LA"
               target="_blank"
               rel="noopener noreferrer"
-              className="facebook  transition-opacity hover:opacity-100"
+              aria-label="Facebook"
+              className="facebook transition-opacity hover:opacity-100"
             >
               <img
                 src={`${import.meta.env.BASE_URL}logos/facebook.svg`}
                 alt="Facebook logo"
-                className="h-6 w-6"
+                className="h-6 w-6 social-icon"
               />
             </Typography>
             {/* Instagram */}
@@ -47,12 +48,13 @@ const Footer = () => {
               href="https://www.instagram.com/sebas_g.b43/"
               target="_blank"
               rel="noopener noreferrer"
-              className="instagram  transition-opacity hover:opacity-100"
+              aria-label="Instagram"
+              className="instagram transition-opacity hover:opacity-100"
             >
               <img
                 src={`${import.meta.env.BASE_URL}logos/instagram.svg`}
                 alt="Instagram logo"
-                className="h-6 w-6"
+                className="h-6 w-6 social-icon"
               />
             </Typography>
             {/* LinkedIn */}
@@ -61,12 +63,13 @@ const Footer = () => {
               href="https://www.linkedin.com/in/sebastian-guzman-038ba6359/"
               target="_blank"
               rel="noopener noreferrer"
-              className="linkendin  transition-opacity hover:opacity-100"
+              aria-label="LinkedIn"
+              className="linkendin transition-opacity hover:opacity-100"
             >
               <img
-                src={`${import.meta.env.BASE_URL}logos/linkendin.svg`} // Ajuste para que funcione en producción
+                src={`${import.meta.env.BASE_URL}logos/linkendin.svg`}
                 alt="LinkedIn logo"
-                className="h-6 w-6"
+                className="h-6 w-6 social-icon"
               />
             </Typography>
           </div>
