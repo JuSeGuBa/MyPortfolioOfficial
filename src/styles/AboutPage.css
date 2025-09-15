@@ -1,24 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&family=Roboto:wght@400;500&display=swap");
 
 .card-about-me {
-  width: 100%;
+  width: 90%; /* Cambiado de 100% para evitar bordes pegados */
   max-width: 50rem;
   color: black;
   padding: clamp(1rem, 4vw, 3rem);
-  text-align: justify; /* más elegante que end */
+  text-align: justify;
   font-size: clamp(1rem, 2vw, 1.3rem);
   font-family: "Roboto", sans-serif;
-  border: 5px solid black; /* borde más ligero */
+  border: 5px solid black;
   border-radius: 15px;
   box-sizing: border-box;
-  margin: clamp(2rem, 8vw, 100px) auto;
+  margin: clamp(1rem, 4vw, 100px) auto; /* Margen superior reducido en móviles */
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
 }
 
 .card-about-me:hover {
-  transform: translateY(-6px); /* efecto flotante */
+  transform: translateY(-6px);
   box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.25);
 }
 
@@ -27,6 +27,7 @@
   font-family: "Baloo 2", sans-serif;
   font-weight: 400;
   transition: transform 0.3s ease;
+  word-break: break-word; /* Evita desbordamiento de texto */
 }
 
 .greeting:hover {
@@ -36,6 +37,7 @@
 .name {
   font-family: "Baloo 2", sans-serif;
   font-size: clamp(1.8rem, 6vw, 4rem);
+  word-break: break-word; /* Evita desbordamiento */
 }
 
 .S {
@@ -51,5 +53,18 @@
 @media (max-width: 480px) {
   .card-about-me {
     text-align: center;
+    width: 95%; /* Más ancho en móviles pequeños */
+    padding: 1rem;
+  }
+
+  .greeting {
+    font-size: clamp(1.8rem, 12vw, 4rem); /* Tamaño ajustado para móviles */
+  }
+}
+
+/* Para tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .card-about-me {
+    width: 92%;
   }
 }

@@ -1,5 +1,5 @@
 .p {
-  font-size: clamp(1.8rem, 6vw, 4rem); /* adaptable móvil → desktop */
+  font-size: clamp(1.8rem, 6vw, 4rem);
   color: #1848a0;
   text-shadow:
     -1px -1px 1px rgba(24, 72, 160, 0.7),
@@ -9,7 +9,7 @@
 }
 
 .h1-projects {
-  font-size: clamp(1.5rem, 5vw, 3rem); /* evita títulos gigantes en móvil */
+  font-size: clamp(1.5rem, 5vw, 3rem);
   transition: transform 0.3s ease;
 }
 
@@ -19,9 +19,9 @@
 
 .info {
   max-width: 600px;
-  width: 100%; /* que no se desborde en móviles */
-  margin: 0 auto; /* centrado en cualquier pantalla */
-  padding: 0 1rem; /* respiro lateral en móviles */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .context {
@@ -51,7 +51,7 @@
 }
 
 .buttons-github {
-  font-size: clamp(1rem, 3.5vw, 1.5rem); /* tamaño responsivo */
+  font-size: clamp(1rem, 3.5vw, 1.5rem);
   background: none;
   border: none;
   outline: none;
@@ -68,21 +68,6 @@
   outline: none !important;
   border: none !important;
   box-shadow: none !important;
-}
-
-/* Ajustes extra en pantallas muy pequeñas */
-@media (max-width: 480px) {
-  .p {
-    text-align: center; /* mejor legibilidad en móvil */
-  }
-  .h1-projects {
-    text-align: center;
-  }
-  .buttons-links,
-  .buttons-github {
-    display: block;
-    margin: 0.5rem auto; /* botones centrados */
-  }
 }
 
 .buttons-links {
@@ -130,21 +115,117 @@
 .animate-fadeInUp {
   animation: fadeInUp 0.8s ease forwards;
 }
-/* evitar que video y overlay bloqueen clicks */
+
 .carousel-video,
 .carousel-overlay {
   pointer-events: none;
 }
 
-/* asegurar que las flechas del carrusel estén arriba */
 .carousel-arrow-fix {
   z-index: 80 !important;
   pointer-events: auto;
 }
+
+/* ================================
+   AJUSTES ESPECÍFICOS SOLO PARA MÓVILES
+   ================================ */
+
+/* Para tablets */
+@media (max-width: 1024px) {
+  .projects-carousel .rounded-xl {
+    max-width: 90% !important;
+    margin: 0 auto;
+  }
+}
+
+/* Para móviles y tablets pequeñas */
 @media (max-width: 768px) {
-  /* reduce altura de carrusel en móviles */
+  .h1-projects {
+    text-align: center;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
   .projects-carousel {
+    padding: 0 1rem;
+  }
+
+  .projects-carousel .rounded-xl {
+    height: 400px !important;
     max-width: 100% !important;
-    height: auto !important;
+  }
+
+  .info {
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
+  }
+
+  /* Ajustar tamaño de texto en proyectos */
+  .projects-carousel h2 {
+    font-size: 1.8rem !important;
+  }
+
+  .projects-carousel p {
+    font-size: 0.9rem !important;
+    padding: 0 0.5rem;
+  }
+
+  /* Botones más compactos */
+  .buttons-links {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .buttons-github {
+    font-size: 1.5rem;
+  }
+}
+
+/* Para móviles pequeños */
+@media (max-width: 480px) {
+  .h1-projects {
+    font-size: 2rem;
+    margin: 1.5rem auto;
+  }
+
+  .projects-carousel .rounded-xl {
+    height: 350px !important;
+  }
+
+  .projects-carousel h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .projects-carousel p {
+    font-size: 0.85rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Grupo de botones en columna en móviles muy pequeños */
+  .projects-carousel .flex {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .buttons-links {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .buttons-github {
+    margin: 0 auto;
+  }
+}
+
+/* Ajuste para orientación horizontal en móviles */
+@media (max-width: 768px) and (orientation: landscape) {
+  .projects-carousel .rounded-xl {
+    height: 300px !important;
+  }
+
+  .projects-carousel .flex {
+    flex-direction: row;
+    gap: 1rem;
   }
 }

@@ -11,8 +11,9 @@
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: bold;
   color: #3a3635;
-  margin-bottom: clamp(2rem, 8vw, 80px);
+  margin-bottom: clamp(1rem, 4vw, 80px); /* Margen reducido para móviles */
   transition: transform 0.3s ease;
+  padding: 0 1rem; /* Espaciado lateral */
 }
 
 .title-skills h1:hover {
@@ -22,16 +23,16 @@
 .skills-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: clamp(15px, 3vw, 20px);
+  gap: clamp(10px, 2vw, 20px); /* Gap reducido para móviles */
 }
 
 .skill {
-  margin-bottom: 20px;
+  margin-bottom: 15px; /* Reducido para móviles */
 }
 
 .skill-name {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  margin-bottom: 10px;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  margin-bottom: 8px;
   font-weight: bold;
   color: #3a3635;
   text-align: left;
@@ -52,7 +53,7 @@
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  height: clamp(12px, 2vw, 20px);
+  height: clamp(10px, 2vw, 20px); /* Altura reducida para móviles */
   width: 100%;
 }
 
@@ -66,7 +67,7 @@
 }
 
 .progress-bar-inner:hover {
-  transform: scale(1.05);
+  transform: scale(1.02); /* Efecto reducido para móviles */
 }
 
 .skill-percentage {
@@ -74,7 +75,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: clamp(0.7rem, 2vw, 0.9rem);
+  font-size: clamp(0.6rem, 1.5vw, 0.9rem); /* Tamaño reducido para móviles */
   color: #fff;
   z-index: 1;
   opacity: 0;
@@ -86,11 +87,27 @@
 }
 
 /* Responsive */
+@media (max-width: 768px) {
+  .skills-list {
+    grid-template-columns: 1fr; /* Una columna en tablets */
+  }
+}
+
 @media (max-width: 480px) {
   .title-skills h1 {
     text-align: center;
   }
+
   .skill-name {
     text-align: center;
+  }
+
+  .skills-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .skill {
+    margin-bottom: 12px;
   }
 }
