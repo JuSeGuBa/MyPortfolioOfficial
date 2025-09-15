@@ -116,133 +116,14 @@
   animation: fadeInUp 0.8s ease forwards;
 }
 
-/* ================================
-   ESTILOS ESPECÍFICOS PARA EL CARRUSEL
-   ================================ */
-
-/* Contenedor principal del carrusel */
-.projects-carousel {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  position: relative;
+.carousel-video,
+.carousel-overlay {
+  pointer-events: none;
 }
 
-/* Asegurar que el carrusel tenga dimensiones adecuadas */
-.projects-carousel > div {
-  width: 100%;
-  max-width: 800px;
-}
-
-/* Estilos para el carrusel */
-.carousel-root {
-  width: 100% !important;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.carousel {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  overflow: hidden;
-  border-radius: 12px;
-}
-
-.carousel .slide {
-  background: transparent !important;
-  height: 100%;
-}
-
-.carousel .slider-wrapper {
-  height: 100%;
-}
-
-.carousel .slider {
-  height: 100%;
-}
-
-/* Ajustar el contenido dentro del carrusel */
-.carousel .slide > div {
-  height: 100%;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Asegurar que los videos se muestren correctamente */
-.carousel video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.3;
-  transition: transform 0.3s ease-in-out;
-}
-
-.carousel .group:hover video {
-  transform: scale(1.05);
-}
-
-/* Overlay para mejor contraste */
-.carousel .absolute.inset-0 {
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.6),
-    rgba(0, 0, 0, 0.2)
-  );
-  z-index: 1;
-}
-
-/* Contenido del slide */
-.carousel .relative.z-10 {
-  z-index: 2;
-  padding: 2rem;
-  text-align: center;
-  max-width: 90%;
-}
-
-/* Flechas de navegación */
-.carousel .carousel-arrow-fix {
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.5) !important;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.carousel .carousel-arrow-fix:hover {
-  background: rgba(0, 0, 0, 0.7) !important;
-  transform: scale(1.1);
-}
-
-/* Indicadores de navegación */
-.carousel .carousel-status {
-  display: none;
-}
-
-.carousel .control-dots {
-  bottom: 20px;
-  z-index: 10;
-}
-
-.carousel .control-dots .dot {
-  background: rgba(255, 255, 255, 0.5);
-  box-shadow: none;
-  width: 10px;
-  height: 10px;
-  margin: 0 4px;
-}
-
-.carousel .control-dots .dot.selected {
-  background: white;
-  width: 20px;
-  border-radius: 5px;
+.carousel-arrow-fix {
+  z-index: 80 !important;
+  pointer-events: auto;
 }
 
 /* ================================
@@ -251,21 +132,9 @@
 
 /* Para tablets */
 @media (max-width: 1024px) {
-  .carousel {
-    height: 450px;
-  }
-
-  .carousel .relative.z-10 {
-    padding: 1.5rem;
-  }
-
-  .carousel h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .carousel p {
-    font-size: 1rem;
+  .projects-carousel .rounded-xl {
+    max-width: 90% !important;
+    margin: 0 auto;
   }
 }
 
@@ -281,8 +150,8 @@
     padding: 0 1rem;
   }
 
-  .carousel {
-    height: 400px;
+  .projects-carousel .rounded-xl {
+    height: 400px !important;
     max-width: 100% !important;
   }
 
@@ -292,14 +161,13 @@
   }
 
   /* Ajustar tamaño de texto en proyectos */
-  .carousel h2 {
-    font-size: 1.5rem !important;
-    margin-bottom: 1rem !important;
+  .projects-carousel h2 {
+    font-size: 1.8rem !important;
   }
 
-  .carousel p {
+  .projects-carousel p {
     font-size: 0.9rem !important;
-    margin-bottom: 1.5rem !important;
+    padding: 0 0.5rem;
   }
 
   /* Botones más compactos */
@@ -311,17 +179,6 @@
   .buttons-github {
     font-size: 1.5rem;
   }
-
-  /* Flechas más pequeñas en móviles */
-  .carousel .carousel-arrow-fix {
-    width: 35px;
-    height: 35px;
-  }
-
-  .carousel .carousel-arrow-fix svg {
-    width: 20px;
-    height: 20px;
-  }
 }
 
 /* Para móviles pequeños */
@@ -331,20 +188,22 @@
     margin: 1.5rem auto;
   }
 
-  .carousel {
-    height: 350px;
+  .projects-carousel .rounded-xl {
+    height: 350px !important;
   }
 
-  .carousel h2 {
-    font-size: 1.3rem !important;
+  .projects-carousel h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
   }
 
-  .carousel p {
+  .projects-carousel p {
     font-size: 0.85rem !important;
+    margin-bottom: 1.5rem !important;
   }
 
   /* Grupo de botones en columna en móviles muy pequeños */
-  .carousel .flex {
+  .projects-carousel .flex {
     flex-direction: column;
     gap: 0.8rem;
   }
@@ -352,63 +211,21 @@
   .buttons-links {
     width: 80%;
     margin: 0 auto;
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
   }
 
   .buttons-github {
     margin: 0 auto;
-    font-size: 1.3rem;
-  }
-
-  /* Flechas aún más pequeñas */
-  .carousel .carousel-arrow-fix {
-    width: 30px;
-    height: 30px;
-  }
-
-  .carousel .carousel-arrow-fix svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  /* Indicadores más pequeños */
-  .carousel .control-dots {
-    bottom: 10px;
-  }
-
-  .carousel .control-dots .dot {
-    width: 8px;
-    height: 8px;
-  }
-
-  .carousel .control-dots .dot.selected {
-    width: 16px;
   }
 }
 
 /* Ajuste para orientación horizontal en móviles */
 @media (max-width: 768px) and (orientation: landscape) {
-  .carousel {
+  .projects-carousel .rounded-xl {
     height: 300px !important;
   }
 
-  .carousel .flex {
+  .projects-carousel .flex {
     flex-direction: row;
     gap: 1rem;
-  }
-
-  .carousel .relative.z-10 {
-    padding: 1rem;
-  }
-
-  .carousel h2 {
-    font-size: 1.2rem !important;
-    margin-bottom: 0.5rem !important;
-  }
-
-  .carousel p {
-    font-size: 0.8rem !important;
-    margin-bottom: 1rem !important;
   }
 }
