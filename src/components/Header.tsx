@@ -10,7 +10,7 @@ const Header = () => {
   };
 
   return (
-    <header id="headerMe">
+    <header id="headerMe" className="header-container">
       <img
         src={`${import.meta.env.BASE_URL}lego2.jpg`}
         alt="FrontendIMG"
