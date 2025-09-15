@@ -88,14 +88,14 @@
 /* Móvil: siempre muestra la imagen entera */
 @media (max-width: 768px) {
   .header-container {
-    height: auto; /* se adapta al contenido */
-    overflow: visible; /* 🔹 permite mostrar todo */
+    height: 100vh; /* ocupa toda la altura */
+    overflow: hidden; /* para que no se descuadre */
   }
 
   .imageFrontened {
     width: 100%;
-    height: auto; /* mantiene proporciones */
-    object-fit: contain; /* 🔹 siempre completa */
+    height: 100%;
+    object-fit: cover; /* 🔹 llena todo el espacio */
   }
 
   .button-arrow {
@@ -105,6 +105,7 @@
     bottom: 3vh;
   }
 }
+
 /* 🔹 Pantallas grandes */
 @media (min-width: 1440px) {
   .button-arrow {
