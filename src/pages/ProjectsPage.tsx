@@ -22,7 +22,7 @@ const ProjectsPage = () => {
         <span className="p">P</span>rojects
       </h1>
 
-      <div className="flex justify-center">
+      <div className="flex justify-center projects-carousel">
         <Carousel
           transition={{ duration: 1 }}
           className="rounded-xl max-w-[800px] h-[500px] transform transition-transform duration-400 ease-in-out hover:scale-105"
