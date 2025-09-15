@@ -10,12 +10,12 @@
 .imageFrontened {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Se adapta sin deformarse */
+  object-fit: cover; /* Desktop: llena la pantalla */
   display: block;
   transition:
     filter 0.6s ease,
     border-radius 0.6s ease;
-  border-radius: 18px; /* 🔹 Bordes suavemente redondeados */
+  border-radius: 18px;
 }
 
 .imageFrontened:hover {
@@ -82,17 +82,21 @@
 /* 🔹 Ajustes móviles */
 @media (max-width: 768px) {
   .header-container {
-    height: 100vh; /* Ocupa toda la pantalla del móvil */
+    height: auto; /* se ajusta al tamaño de la imagen */
+  }
+
+  .imageFrontened {
+    height: auto; /* deja que la imagen respete su proporción */
+    object-fit: contain; /* siempre se ve completa */
   }
 
   .button-arrow {
     font-size: clamp(1.8rem, 10vw, 3.5rem);
-    right: 50%; /* Centrado horizontal */
-    transform: translateX(50%); /* Corrección de centrado */
+    right: 50%;
+    transform: translateX(50%);
     bottom: 3vh;
   }
 }
-
 /* 🔹 Pantallas grandes */
 @media (min-width: 1440px) {
   .button-arrow {
