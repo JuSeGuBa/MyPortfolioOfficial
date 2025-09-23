@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export default function Background() {
   return (
     <motion.img
-      src="/fondo/fondo6.png "
+      src="/fondo/electry5.png "
       alt="Fondo animado"
       initial={{ scale: 1 }}
       animate={{ scale: [1, 1.03, 1] }} // movimiento hacia adelante y atrás
