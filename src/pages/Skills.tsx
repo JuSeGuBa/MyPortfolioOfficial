@@ -11,6 +11,7 @@ interface Skill {
 const skills: Skill[] = [
   { name: "React", level: 100, baseColor: "#1848a0", hoverColor: "#006fb9" },
   { name: "Angular", level: 100, baseColor: "#dd1b16", hoverColor: "#f44336" },
+  { name: "Vue", level: 100, baseColor: "#42b883", hoverColor: "#42b883" },
   {
     name: "Redux Toolkit",
     level: 90,

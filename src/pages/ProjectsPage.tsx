@@ -6,6 +6,9 @@ const ProjectsPage = () => {
   const handlelinkFacebookGithub = () => {
     window.open("https://github.com/JuSeGuBa/facebook_project");
   };
+  const handlePendingTasksGithub = () => {
+    window.open("https://github.com/JuSeGuBa/Prueba-Tecnica-Sebastian-guzman");
+  };
   const handlelinkLoginGithub = () => {
     window.open("https://github.com/JuSeGuBa/Registration-Form");
   };
@@ -14,6 +17,11 @@ const ProjectsPage = () => {
   };
   const handlelinkLogin = () => {
     window.open("https://registration-five-brown.vercel.app/");
+  };
+  const handlePendingTasks = () => {
+    window.open(
+      "https://prueba-tecnica-sebastian-guzman-m9l6xls4m-jusegubas-projects.vercel.app/"
+    );
   };
 
   return (
@@ -106,7 +114,46 @@ const ProjectsPage = () => {
             </div>
           )}
         >
-          {/* Proyecto 1 */}
+          {/* Proyecto 1*/}
+          <div className="group relative h-full w-full flex items-center justify-center bg-gray-900 text-center rounded-xl overflow-hidden">
+            <video
+              autoPlay
+              loop
+              muted
+              className="absolute top-0 left-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-300 ease-in-out pointer-events-none"
+            >
+              <source
+                src={`${import.meta.env.BASE_URL}videos/tareas.mp4`}
+                type="video/mp4"
+              />
+            </video>
+
+            {/* Overlay degradado: hacemos pointer-events-none para no bloquear flechas */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 z-[1] pointer-events-none" />
+
+            <div className="relative z-10 p-6 animate-fadeInUp">
+              <h2 className="text-3xl font-bold text-white mb-8">
+                Pending Tasks
+              </h2>
+              <p className="info text-lg text-gray-200">
+                Developed an interactive web to create, update, and delete tasks
+                using Vue and TailwindCSS, optimizing the user experience with a
+                modern interface and an efficient API.
+              </p>
+              <div className="flex items-center justify-center gap-4 mt-6">
+                <button onClick={handlePendingTasks} className="buttons-links">
+                  See project
+                </button>
+                <button
+                  onClick={handlePendingTasksGithub}
+                  className="buttons-github"
+                >
+                  <FaGithub />
+                </button>
+              </div>
+            </div>
+          </div>
+          {/* Proyecto 2 */}
           <div className="group relative h-full w-full flex items-center justify-center bg-gray-900 text-center rounded-xl overflow-hidden">
             <video
               autoPlay
@@ -143,8 +190,7 @@ const ProjectsPage = () => {
               </div>
             </div>
           </div>
-
-          {/* Proyecto 2 */}
+          {/* Proyecto 3 */}
           <div className="group relative h-full w-full flex items-center justify-center bg-black text-center rounded-xl overflow-hidden">
             <video
               autoPlay
