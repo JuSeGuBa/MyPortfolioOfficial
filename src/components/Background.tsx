@@ -1,97 +1,318 @@
 import { motion } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 
-export default function Background() {
-  const nodos = [
-    [200, 150],
-    [400, 300],
-    [600, 450],
-    [800, 600],
-    [1000, 300],
-    [1200, 500],
-    [1400, 700],
-    [300, 700],
-    [500, 250],
-    [900, 650],
-    [1100, 400],
-    [1300, 200],
-    [250, 500],
-    [450, 700],
-    [700, 200],
-    [950, 500],
-    [1150, 650],
-    [1350, 350],
-  ];
+export default function ScannerBackground() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const svgRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (svgRef.current) {
+        const rect = svgRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: ((e.clientX - rect.left) / rect.width) * 1600,
+          y: ((e.clientY - rect.top) / rect.height) * 900,
+        });
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  // Generate data points
+  const dataPoints = Array.from({ length: 60 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 1600,
+    y: Math.random() * 900,
+    size: Math.random() * 2 + 1.5,
+    delay: Math.random() * 3,
+    speed: Math.random() * 2 + 1,
+    type: Math.floor(Math.random() * 3),
+  }));
+
+  // Grid lines for radar effect
+  const gridLines = Array.from({ length: 6 }, (_, i) => ({
+    id: i,
+    radius: (i + 1) * 120,
+    delay: i * 0.2,
+  }));
 
   return (
     <motion.svg
+      ref={svgRef}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1600 900"
-      className="fixed inset-0 -z-10 w-full h-full"
+      className="fixed inset-0 -z-10 w-full h-full opacity-45"
     >
-      {/* Fondo blanco */}
-      <rect width="100%" height="100%" fill="white" />
+      <defs>
+        {/* Gradients for light effects */}
+        <radialGradient id="scannerGlow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0%" stopColor="#1549A5" stopOpacity="0.7" />
+          <stop offset="50%" stopColor="#1549A5" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#1549A5" stopOpacity="0" />
+        </radialGradient>
 
-      {/* === Circuitos principales gruesos === */}
-      <g strokeLinecap="round" strokeLinejoin="round" fill="none">
-        <path
-          d="M200 150 H1400 V250 H500 V400 H1100 V600 H300 V750"
-          stroke="#13479B"
-          strokeWidth="3"
-        />
-        <path
-          d="M250 200 V700 H1350 V300 H600 V500 H950 V650"
-          stroke="#13479B"
-          strokeWidth="3"
-        />
-        <path d="M800 100 V800" stroke="#13479B" strokeWidth="3" />
-        <path d="M1000 150 V750" stroke="#13479B" strokeWidth="3" />
-      </g>
+        <linearGradient id="pulseGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="transparent" />
+          <stop offset="20%" stopColor="#1549A5" />
+          <stop offset="50%" stopColor="#1549A5" />
+          <stop offset="80%" stopColor="#1549A5" />
+          <stop offset="100%" stopColor="transparent" />
+        </linearGradient>
 
-      {/* === Circuitos secundarios === */}
-      <g strokeLinecap="round" strokeLinejoin="round" fill="none">
-        <path d="M400 200 V650" stroke="#13479B" strokeWidth="1.5" />
-        <path d="M1200 250 V700" stroke="#13479B" strokeWidth="1.5" />
-        <path d="M700 300 H1200" stroke="#13479B" strokeWidth="1.5" />
-        <path d="M450 500 H900" stroke="#13479B" strokeWidth="1.5" />
-        <path
-          d="M200 400 H600 V600 H200 Z"
-          stroke="#13479B"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M1000 200 H1400 V600 H1000 Z"
-          stroke="#13479B"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M300 300 L600 100 L900 300 L1200 100"
-          stroke="#13479B"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M300 600 L600 800 L900 600 L1200 800"
-          stroke="#13479B"
-          strokeWidth="1.5"
-        />
-      </g>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
 
-      {/* === Nodos sincronizados === */}
-      {nodos.map(([x, y], i) => (
+        <pattern
+          id="grid"
+          width="120"
+          height="120"
+          patternUnits="userSpaceOnUse"
+        >
+          <path
+            d="M 120 0 L 0 0 0 120"
+            fill="none"
+            stroke="#1549A5"
+            strokeWidth="1"
+            opacity="0.2"
+          />
+        </pattern>
+      </defs>
+
+      {/* Transparent background with subtle grid */}
+      <rect width="100%" height="100%" fill="transparent" />
+      <rect width="100%" height="100%" fill="url(#grid)" />
+
+      {/* Concentric radar circles */}
+      {gridLines.map((line) => (
         <motion.circle
-          key={i}
-          cx={x}
-          cy={y}
-          r="8"
-          stroke="#13479B"
-          fill="#13479B"
-          animate={{ r: [6, 12, 6], opacity: [0.6, 1, 0.6] }}
+          key={line.id}
+          cx={800}
+          cy={450}
+          r={line.radius}
+          stroke="#1549A5"
+          strokeWidth="1.2"
+          fill="none"
+          opacity="0.3"
+          animate={{ opacity: [0.15, 0.35, 0.15] }}
           transition={{
-            duration: 2,
+            duration: 4,
             repeat: Infinity,
+            delay: line.delay,
             ease: "easeInOut",
           }}
         />
       ))}
+
+      {/* Axis lines */}
+      <line
+        x1="800"
+        y1="0"
+        x2="800"
+        y2="900"
+        stroke="#1549A5"
+        strokeWidth="1.5"
+        opacity="0.25"
+      />
+      <line
+        x1="0"
+        y1="450"
+        x2="1600"
+        y2="450"
+        stroke="#1549A5"
+        strokeWidth="1.5"
+        opacity="0.25"
+      />
+
+      {/* Main radial scanner */}
+      <motion.circle
+        cx={800}
+        cy={450}
+        r="400"
+        stroke="url(#pulseGradient)"
+        strokeWidth="3"
+        fill="none"
+        filter="url(#glow)"
+        animate={{ r: [80, 750, 80] }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeOut",
+        }}
+      />
+
+      {/* Rotating scanner beam */}
+      <motion.g
+        animate={{ rotate: [0, 360] }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        transform-origin="800 450"
+      >
+        <motion.path
+          d="M 800 450 L 1350 450"
+          stroke="#1549A5"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          filter="url(#glow)"
+          animate={{ opacity: [0, 0.9, 0] }}
+          transition={{
+            duration: 0.4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </motion.g>
+
+      {/* Data points */}
+      {dataPoints.map((point) => (
+        <motion.g key={point.id}>
+          <motion.circle
+            cx={point.x}
+            cy={point.y}
+            r={point.size}
+            fill="#1549A5"
+            filter="url(#glow)"
+            animate={{
+              opacity: [0.2, 0.8, 0.2],
+              scale: [0.7, 1.4, 0.7],
+            }}
+            transition={{
+              duration: point.speed * 2,
+              repeat: Infinity,
+              delay: point.delay,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Pulse rings for some points */}
+          {point.type === 0 && (
+            <motion.circle
+              cx={point.x}
+              cy={point.y}
+              r={point.size * 3}
+              stroke="#1549A5"
+              strokeWidth="1"
+              fill="none"
+              animate={{
+                r: [point.size * 2, point.size * 5, point.size * 2],
+                opacity: [0.3, 0, 0.3],
+              }}
+              transition={{
+                duration: point.speed * 2.5,
+                repeat: Infinity,
+                delay: point.delay,
+                ease: "easeOut",
+              }}
+            />
+          )}
+        </motion.g>
+      ))}
+
+      {/* Connection lines */}
+      {dataPoints.slice(0, 15).map((point, i) => (
+        <motion.line
+          key={`line-${i}`}
+          x1={800}
+          y1={450}
+          x2={point.x}
+          y2={point.y}
+          stroke="#1549A5"
+          strokeWidth="0.8"
+          strokeDasharray="5 3"
+          animate={{ opacity: [0, 0.4, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            delay: i * 0.1,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+
+      {/* Wave effect centered on mouse */}
+      <motion.circle
+        cx={mousePosition.x}
+        cy={mousePosition.y}
+        r="45"
+        stroke="url(#scannerGlow)"
+        strokeWidth="2"
+        fill="none"
+        animate={{ r: [25, 80, 25], opacity: [0.3, 0, 0.3] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
+      />
+
+      {/* HUD style diagnostic text */}
+      <motion.text
+        x="100"
+        y="100"
+        fill="#1549A5"
+        fontSize="16"
+        fontFamily="'Courier New', monospace"
+        fontWeight="bold"
+        opacity="0.7"
+        animate={{ opacity: [0.4, 0.8, 0.4] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        SYSTEM ONLINE
+      </motion.text>
+
+      <motion.text
+        x="100"
+        y="125"
+        fill="#1549A5"
+        fontSize="14"
+        fontFamily="'Courier New', monospace"
+        opacity="0.6"
+        animate={{ opacity: [0.3, 0.7, 0.3] }}
+        transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+      >
+        SCANNING...
+      </motion.text>
+
+      {/* Signal bars */}
+      {Array.from({ length: 5 }).map((_, i) => (
+        <motion.rect
+          key={i}
+          x={1450 + i * 22}
+          y={800 - i * 18}
+          width="12"
+          height={i * 18 + 12}
+          fill="#1549A5"
+          opacity="0.7"
+          animate={{ opacity: [0.3, 0.8, 0.3] }}
+          transition={{
+            duration: 1.2,
+            repeat: Infinity,
+            delay: i * 0.2,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+
+      {/* Simple corner markers */}
+      <path
+        d="M 60 60 L 90 60 L 90 90 L 60 90"
+        fill="none"
+        stroke="#1549A5"
+        strokeWidth="2"
+        opacity="0.6"
+      />
+      <path
+        d="M 1540 60 L 1510 60 L 1510 90 L 1540 90"
+        fill="none"
+        stroke="#1549A5"
+        strokeWidth="2"
+        opacity="0.6"
+      />
     </motion.svg>
   );
 }

@@ -2,56 +2,56 @@
 .header-container {
   position: relative;
   width: 100%;
-  height: 100vh; /* ocupa pantalla (desktop y móvil). Si quieres evitar problemas con barras móviles, usa min-height en combinación) */
-  overflow: hidden; /* evita scroll lateral por la imagen */
-  display: block;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Imagen responsiva */
+/* Imagen COMPLETA con todas las transiciones */
 .imageFrontened {
   display: block;
-  width: 100%;
-  height: 100%;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover; /* importante: cubre el contenedor sin dejar huecos */
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   object-position: center;
   border-radius: 18px;
   transition:
     filter 0.6s ease,
-    border-radius 0.6s ease;
+    border-radius 0.6s ease,
+    transform 0.6s ease;
 }
 
+/* Transiciones al hover */
 .imageFrontened:hover {
   filter: brightness(1.05) contrast(1.05);
   border-radius: 25px;
+  transform: scale(1.02);
 }
 
 /* Botón flotante */
 .button-arrow {
   font-size: clamp(2rem, 6vw, 5.3rem);
   position: absolute;
-  bottom: 4vh;
-  right: 5vw;
-
   background: transparent;
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   border: solid 2px white;
   border-radius: 50%;
   padding: 0.5rem;
-
   color: #fff;
   cursor: pointer;
-
   transition:
     transform 0.3s ease,
     background 0.3s ease,
     text-shadow 0.3s ease;
-
   text-shadow:
     0 2px 6px rgba(0, 0, 0, 0.6),
     0 0 10px rgba(255, 255, 255, 0.4);
-
   animation: bounce 2s infinite;
 }
 
@@ -83,30 +83,96 @@
   }
 }
 
-/* 🔹 Ajustes móviles */
-.imageFrontened:hover {
-  filter: brightness(1.05) contrast(1.05);
-  border-radius: 25px;
-}
-
-/* Móvil: siempre muestra la imagen entera */
+/* 🔹 Móviles */
 @media (max-width: 768px) {
   .header-container {
-    height: 100vh; /* o min-height: 80vh si la barra de navegación molesta */
+    height: 100dvh;
+    min-height: -webkit-fill-available;
+    padding: 5px; /* menos espacio */
+    box-sizing: border-box;
   }
+
   .imageFrontened {
-    object-fit: cover; /* mantener cover en móvil también */
-    border-radius: 12px; /* si quieres menos radio en móvil */
+    width: 100%;
+    height: auto;
+    max-height: 95vh; /* más aprovechamiento del espacio */
+    object-fit: contain;
+    border-radius: 16px;
   }
+
+  .imageFrontened:hover {
+    filter: brightness(1.05) contrast(1.05);
+    border-radius: 20px;
+    transform: scale(1.02);
+  }
+
   .button-arrow {
-    font-size: clamp(1.8rem, 10vw, 3.5rem);
-    bottom: 3vh;
+    display: none; /* 🔸 Se oculta en móviles */
   }
 }
+
+/* 🔹 Tablets */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .imageFrontened {
+    max-height: 95vh;
+    object-fit: contain;
+    border-radius: 18px;
+  }
+
+  .button-arrow {
+    bottom: 12vh; /* arriba */
+    right: 6vw; /* un poco más a la izquierda */
+  }
+}
+
 /* 🔹 Pantallas grandes */
 @media (min-width: 1440px) {
+  .imageFrontened {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+  }
+
   .button-arrow {
-    right: 3vw;
-    bottom: 5vh;
+    bottom: 12vh; /* arriba */
+    right: 6vw; /* un poco más a la izquierda */
+  }
+}
+
+/* 🔹 Orientación horizontal en móviles */
+@media (max-width: 768px) and (orientation: landscape) {
+  .header-container {
+    height: 100dvh;
+    padding: 5px; /* menos espacio */
+  }
+
+  .imageFrontened {
+    max-height: 90vh;
+    max-width: 95vw;
+    border-radius: 16px;
+  }
+
+  .button-arrow {
+    display: none; /* 🔸 Oculto en landscape móvil también */
+  }
+}
+
+/* 🔹 Pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .header-container {
+    padding: 5px; /* menos espacio arriba y abajo */
+  }
+
+  .imageFrontened {
+    border-radius: 12px;
+    max-height: 93vh; /* ocupa más espacio */
+  }
+
+  .imageFrontened:hover {
+    border-radius: 18px;
+  }
+
+  .button-arrow {
+    display: none; /* 🔸 No se muestra en móviles pequeños */
   }
 }
