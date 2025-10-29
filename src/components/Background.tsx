@@ -239,16 +239,18 @@ export default function ScannerBackground() {
       ))}
 
       {/* Wave effect centered on mouse */}
-      <motion.circle
-        cx={mousePosition.x}
-        cy={mousePosition.y}
-        r="45"
-        stroke="url(#scannerGlow)"
-        strokeWidth="2"
-        fill="none"
-        animate={{ r: [25, 80, 25], opacity: [0.3, 0, 0.3] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
-      />
+      {!isNaN(mousePosition.x) && !isNaN(mousePosition.y) && (
+        <motion.circle
+          cx={mousePosition.x}
+          cy={mousePosition.y}
+          r="45"
+          stroke="url(#scannerGlow)"
+          strokeWidth="2"
+          fill="none"
+          animate={{ r: [25, 80, 25], opacity: [0.3, 0, 0.3] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
+        />
+      )}
 
       {/* HUD style diagnostic text */}
       <motion.text
