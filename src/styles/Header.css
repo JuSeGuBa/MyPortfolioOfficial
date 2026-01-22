@@ -1,16 +1,35 @@
-/* Contenedor principal del header */
+/* ===============================
+   CONTENEDOR PRINCIPAL
+================================ */
 .header-container {
   position: relative;
   width: 100%;
   height: 100vh;
   height: 100dvh;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
-/* Imagen COMPLETA con todas las transiciones */
+/* ===============================
+   CONTENEDOR DE IMAGEN
+================================ */
+.image-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  height: fit-content;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* ===============================
+   IMAGEN
+================================ */
 .imageFrontened {
   display: block;
   width: auto;
@@ -18,7 +37,6 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  object-position: center;
   border-radius: 18px;
   transition:
     filter 0.6s ease,
@@ -26,47 +44,75 @@
     transform 0.6s ease;
 }
 
-/* Transiciones al hover */
 .imageFrontened:hover {
   filter: brightness(1.05) contrast(1.05);
   border-radius: 25px;
   transform: scale(1.02);
 }
 
-/* Botón flotante */
-.button-arrow {
-  font-size: clamp(2rem, 6vw, 5.3rem);
+.scroll-indicator {
   position: absolute;
-  background: transparent;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  border: solid 2px white;
-  border-radius: 50%;
-  padding: 0.5rem;
-  color: #fff;
-  cursor: pointer;
-  transition:
-    transform 0.3s ease,
-    background 0.3s ease,
-    text-shadow 0.3s ease;
-  text-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.6),
-    0 0 10px rgba(255, 255, 255, 0.4);
-  animation: bounce 2s infinite;
+  bottom: clamp(1.5rem, 4dvh, 3rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  pointer-events: none;
 }
 
-.button-arrow:focus,
-.button-arrow:hover {
-  transform: scale(1.2);
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  outline: none;
-  text-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.8),
-    0 0 14px rgba(255, 255, 255, 0.6);
+.scroll-line {
+  width: 4px;
+  height: 52px;
+  background: #1648a1;
+  border-radius: 999px;
+  animation: scrollLine 1.8s ease-in-out infinite;
 }
 
-/* Animación */
+.scroll-arrow {
+  width: 8px;
+  height: 8px;
+  border-right: 3px solid #1648a1;
+  border-bottom: 3px solid #1648a1;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  animation: scrollArrow 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+  0% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@keyframes scrollArrow {
+  0% {
+    opacity: 0;
+    transform: translateY(-4px) rotate(45deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(4px) rotate(45deg);
+  }
+}
+
+/* ===============================
+   ANIMACIÓN
+================================ */
 @keyframes bounce {
   0%,
   20%,
@@ -83,96 +129,23 @@
   }
 }
 
-/* 🔹 Móviles */
+/* ===============================
+   MÓVILES
+================================ */
 @media (max-width: 768px) {
-  .header-container {
-    height: 100dvh;
-    min-height: -webkit-fill-available;
-    padding: 5px; /* menos espacio */
-    box-sizing: border-box;
-  }
-
   .imageFrontened {
     width: 100%;
-    height: auto;
-    max-height: 95vh; /* más aprovechamiento del espacio */
-    object-fit: contain;
+    max-height: 95vh;
     border-radius: 16px;
   }
-
-  .imageFrontened:hover {
-    filter: brightness(1.05) contrast(1.05);
-    border-radius: 20px;
-    transform: scale(1.02);
-  }
-
-  .button-arrow {
-    display: none; /* 🔸 Se oculta en móviles */
-  }
 }
 
-/* 🔹 Tablets */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .imageFrontened {
-    max-height: 95vh;
-    object-fit: contain;
-    border-radius: 18px;
-  }
-
-  .button-arrow {
-    bottom: 12vh; /* arriba */
-    right: 6vw; /* un poco más a la izquierda */
-  }
-}
-
-/* 🔹 Pantallas grandes */
+/* ===============================
+   PANTALLAS GRANDES
+================================ */
 @media (min-width: 1440px) {
   .imageFrontened {
     max-width: 90%;
     max-height: 90vh;
-    object-fit: contain;
-  }
-
-  .button-arrow {
-    bottom: 12vh; /* arriba */
-    right: 6vw; /* un poco más a la izquierda */
-  }
-}
-
-/* 🔹 Orientación horizontal en móviles */
-@media (max-width: 768px) and (orientation: landscape) {
-  .header-container {
-    height: 100dvh;
-    padding: 5px; /* menos espacio */
-  }
-
-  .imageFrontened {
-    max-height: 90vh;
-    max-width: 95vw;
-    border-radius: 16px;
-  }
-
-  .button-arrow {
-    display: none; /* 🔸 Oculto en landscape móvil también */
-  }
-}
-
-/* 🔹 Pantallas muy pequeñas */
-@media (max-width: 480px) {
-  .header-container {
-    padding: 5px; /* menos espacio arriba y abajo */
-  }
-
-  .imageFrontened {
-    border-radius: 12px;
-    max-height: 93vh; /* ocupa más espacio */
-  }
-
-  .imageFrontened:hover {
-    border-radius: 18px;
-  }
-
-  .button-arrow {
-    display: none; /* 🔸 No se muestra en móviles pequeños */
   }
 }
