@@ -23,10 +23,7 @@ const Header = () => {
         className="imageFrontened"
       />
 
-      <div className="scroll-indicator">
-        <span className="scroll-line" />
-        <span className="scroll-arrow" />
-      </div>
+      <div className="scroll-indicator" />
     </header>
   );
 };
