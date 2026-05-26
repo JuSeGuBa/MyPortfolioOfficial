@@ -12,6 +12,9 @@ const ProjectsPage = () => {
   const handlelinkLoginGithub = () => {
     window.open("https://github.com/JuSeGuBa/Registration-Form");
   };
+  const handleCortexaGithub = () => {
+    window.open("https://github.com/JuSeGuBa/Cortexa");
+  };
   const handlelinkFacebook = () => {
     window.open("https://facebook-project-seven.vercel.app/#");
   };
@@ -20,8 +23,11 @@ const ProjectsPage = () => {
   };
   const handlePendingTasks = () => {
     window.open(
-      "https://prueba-tecnica-sebastian-guzman-m9l6xls4m-jusegubas-projects.vercel.app/"
+      "https://prueba-tecnica-sebastian-guzman-m9l6xls4m-jusegubas-projects.vercel.app/",
     );
+  };
+  const handleCortexa = () => {
+    window.open("https://cortexa-five.vercel.app/");
   };
 
   return (
@@ -114,6 +120,46 @@ const ProjectsPage = () => {
             </div>
           )}
         >
+          {/* Proyecto 0*/}
+          <div className="group relative h-full w-full flex items-center justify-center bg-gray-900 text-center rounded-xl overflow-hidden">
+            <video
+              autoPlay
+              loop
+              muted
+              className="absolute top-0 left-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-300 ease-in-out pointer-events-none"
+            >
+              <source
+                src={`${import.meta.env.BASE_URL}videos/Cortexa.mp4`}
+                type="video/mp4"
+              />
+            </video>
+
+            {/* Overlay degradado: hacemos pointer-events-none para no bloquear flechas */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 z-[1] pointer-events-none" />
+
+            <div className="relative z-10 p-6 animate-fadeInUp">
+              <h2 className="text-3xl font-bold text-white mb-8">
+                Cortexa - Intelligence Productivity
+              </h2>
+              <p className="info text-lg text-gray-200">
+                Built a full-stack SaaS productivity app with Next.js,
+                TypeScript, and Supabase, including notes/tasks management,
+                habit tracking, AI insights, authentication, and a premium
+                animated UI. Deployed on Vercel with PostgreSQL.
+              </p>
+              <div className="flex items-center justify-center gap-4 mt-6">
+                <button onClick={handleCortexa} className="buttons-links">
+                  See project
+                </button>
+                <button
+                  onClick={handleCortexaGithub}
+                  className="buttons-github"
+                >
+                  <FaGithub />
+                </button>
+              </div>
+            </div>
+          </div>
           {/* Proyecto 1*/}
           <div className="group relative h-full w-full flex items-center justify-center bg-gray-900 text-center rounded-xl overflow-hidden">
             <video
