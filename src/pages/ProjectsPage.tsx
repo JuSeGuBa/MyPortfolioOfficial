@@ -33,7 +33,7 @@ const PROJECTS: Project[] = [
     title: "Facebook",
     description:
       "Developed an interactive network to create, update and delete posts, using React, TypeScript and TailwindCSS, optimizing the user experience with a modern interface and an efficient API.",
-    url: "https://facebook-project-seven.vercel.app/#",
+    url: "https://facebook-project-ruddy.vercel.app/",
     github: "https://github.com/JuSeGuBa/facebook_project",
     video: "videos/Facebook.mp4",
   },
