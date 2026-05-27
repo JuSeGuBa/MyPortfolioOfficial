@@ -1,5 +1,5 @@
 import "../styles/Skills.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 
 interface Skill {
   name: string;
@@ -8,7 +8,7 @@ interface Skill {
   hoverColor: string;
 }
 
-const skills: Skill[] = [
+const SKILLS: Skill[] = [
   { name: "Next.js", level: 100, baseColor: "#080808", hoverColor: "#09B57B" },
   { name: "React", level: 100, baseColor: "#1848a0", hoverColor: "#006fb9" },
   { name: "Angular", level: 100, baseColor: "#dd1b16", hoverColor: "#f44336" },
@@ -32,7 +32,6 @@ const skills: Skill[] = [
     baseColor: "#7952b3",
     hoverColor: "#9d70d1",
   },
-
   {
     name: "JavaScript",
     level: 100,
@@ -48,7 +47,6 @@ const skills: Skill[] = [
   { name: "HTML", level: 100, baseColor: "#e34c26", hoverColor: "#ff6b4a" },
   { name: "CSS", level: 100, baseColor: "#264de4", hoverColor: "#5596f6" },
   { name: "DOM", level: 100, baseColor: "#303030", hoverColor: "#555" },
-
   {
     name: "CSS Modules",
     level: 80,
@@ -57,7 +55,6 @@ const skills: Skill[] = [
   },
   { name: "PostCSS", level: 80, baseColor: "#dd3735", hoverColor: "#f0625d" },
   { name: "SCSS", level: 80, baseColor: "#bf4080", hoverColor: "#e071a8" },
-
   { name: "Git", level: 100, baseColor: "#f05133", hoverColor: "#ff735c" },
   { name: "GitHub", level: 100, baseColor: "#000000", hoverColor: "#333" },
   {
@@ -70,35 +67,52 @@ const skills: Skill[] = [
 
 const Skills = () => {
   const [animate, setAnimate] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const skills = useMemo(() => SKILLS, []);
 
   useEffect(() => {
-    // Dispara animación al montar
-    const timer = setTimeout(() => setAnimate(true), 200);
-    return () => clearTimeout(timer);
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimate(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="skills-container">
+    <div className="skills-section" ref={containerRef}>
       <div className="title-skills">
         <h1>
           <span className="s">S</span>kills
         </h1>
       </div>
+
       <div className="skills-list">
         {skills.map((skill, index) => (
-          <div key={index} className="skill">
-            <div className="skill-name">{skill.name}</div>
+          <div key={skill.name} className="skill">
+            <div className="skill-header">
+              <span className="skill-name">{skill.name}</span>
+              <span className="skill-level-label">{skill.level}%</span>
+            </div>
             <div className="progress-bar">
               <div
                 className="progress-bar-inner"
                 style={{
                   width: animate ? `${skill.level}%` : "0%",
-                  transitionDelay: `${index * 150}ms`, // efecto stagger
+                  transitionDelay: `${index * 80}ms`,
                   background: `linear-gradient(90deg, ${skill.baseColor}, ${skill.hoverColor})`,
                 }}
-              >
-                <span className="skill-percentage">{skill.level}%</span>
-              </div>
+              />
             </div>
           </div>
         ))}

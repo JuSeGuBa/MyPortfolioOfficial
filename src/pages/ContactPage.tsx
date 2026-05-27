@@ -6,11 +6,12 @@ import "../styles/Contact.css";
 
 const ContactPage = () => {
   const form = useRef<HTMLFormElement>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!form.current) return;
 
     const formData = new FormData(form.current);
@@ -19,157 +20,168 @@ const ContactPage = () => {
     const email = formData.get("user_email") as string;
     const message = formData.get("message") as string;
 
-    // Validación de campos obligatorios
     if (
       !firstName.trim() ||
       !lastName.trim() ||
       !email.trim() ||
       !message.trim()
     ) {
-      alert("Por favor, completa todos los campos obligatorios.");
+      setError(true);
       return;
     }
 
     setIsLoading(true);
+    setError(false);
 
     try {
-      const result = await emailjs.sendForm(
-        "service_yoapk2c", // ⚡ Cambia por tu Service ID
-        "template_ren4i0b", // ⚡ Cambia por tu Template ID
-        form.current, // Referencia al formulario
-        "kfk7NXzjf2jUPIPPA" // ⚡ Cambia por tu Public Key
+      await emailjs.sendForm(
+        "service_yoapk2c",
+        "template_ren4i0b",
+        form.current,
+        "kfk7NXzjf2jUPIPPA",
       );
-
-      console.log("Correo enviado:", result.text);
-      alert("¡Correo enviado con éxito! 🚀");
-
+      setSent(true);
       form.current.reset();
-    } catch (error) {
-      console.error("Error al enviar el correo:", error);
-      alert("Hubo un error al enviar el correo. 😥");
+    } catch {
+      setError(true);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="isolate flex items-center justify-center min-h-screen px-6 py-24 sm:py-32 lg:px-8">
-      <div className="max-w-[800px] w-full">
-        <div className="mx-0 max-w-full text-left">
-          <h1 className="h1-contact text-[3.5rem] font-bold text-left text-gray-800 my-20 mx-auto max-w-[800px]">
-            <span className="c">C</span>ontact
+    <div className="contact-page">
+      <div className="contact-wrapper">
+        {/* Header */}
+        <div className="contact-header">
+          <p className="contact-header__eyebrow">// get in touch</p>
+          <h1 className="contact-header__title">
+            <span className="contact-header__accent">C</span>ontact
           </h1>
-          <p className="mt-2 text-lg/8 text-black text-left mx-0 max-w-full">
+          <p className="contact-header__subtitle">
             Contact me and let's start creating something amazing!
           </p>
         </div>
 
-        <form
-          ref={form}
-          onSubmit={handleSubmit}
-          className="mx-auto mt-16 max-w-full sm:mt-20"
-        >
-          <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-            <div className="firstName">
-              <label
-                htmlFor="first-name"
-                className="block text-left font-semibold text-gray-900"
-              >
-                First name <sup>*</sup>
-              </label>
-              <input
-                id="first-name"
-                name="user_firstname"
-                type="text"
-                autoComplete="given-name"
-                required
-                className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-gray-600 placeholder:text-gray-400 focus:ring-1 focus:ring-[#1848a0]"
-              />
-            </div>
-            <div className="lastName">
-              <label
-                htmlFor="last-name"
-                className="block text-left font-semibold text-gray-900"
-              >
-                Last name <sup>*</sup>
-              </label>
-              <input
-                id="last-name"
-                name="user_lastname"
-                type="text"
-                autoComplete="family-name"
-                required
-                className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-gray-600 placeholder:text-black focus:ring-1 focus:ring-[#1848a0]"
-              />
-            </div>
-            <div className="company sm:col-span-2">
-              <label
-                htmlFor="company"
-                className="block text-left font-semibold text-gray-900"
-              >
-                Company
-              </label>
-              <input
-                id="company"
-                name="user_company"
-                type="text"
-                autoComplete="organization"
-                className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-gray-600 placeholder:text-gray-400 focus:ring-1 focus:ring-[#1848a0]"
-              />
-            </div>
-            <div className="email sm:col-span-2">
-              <label
-                htmlFor="email"
-                className="block text-left font-semibold text-gray-900"
-              >
-                Email <sup>*</sup>
-              </label>
-              <input
-                id="email"
-                name="user_email"
-                type="email"
-                autoComplete="email"
-                required
-                className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-gray-600 placeholder:text-gray-400 focus:ring-1 focus:ring-[#1848a0]"
-              />
-            </div>
-            <div className="message sm:col-span-2">
-              <label
-                htmlFor="message"
-                className="block text-left font-semibold text-gray-900"
-              >
-                Message <sup>*</sup>
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={4}
-                required
-                className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-gray-600 placeholder:text-gray-400 focus:ring-1 focus:ring-[#1848a0]"
-              />
-            </div>
+        {/* Success state */}
+        {sent ? (
+          <div className="contact-success">
+            <span className="contact-success__icon">✓</span>
+            <p className="contact-success__text">Message sent successfully!</p>
+            <button
+              className="contact-success__reset"
+              onClick={() => setSent(false)}
+            >
+              Send another
+            </button>
           </div>
-          <div className="mt-10">
+        ) : (
+          <form
+            ref={form}
+            onSubmit={handleSubmit}
+            className="contact-form"
+            noValidate
+          >
+            {error && (
+              <p className="contact-error">
+                Please fill in all required fields.
+              </p>
+            )}
+
+            <div className="contact-grid">
+              {/* First name */}
+              <div className="contact-field">
+                <label htmlFor="first-name" className="contact-label">
+                  First name <sup>*</sup>
+                </label>
+                <input
+                  id="first-name"
+                  name="user_firstname"
+                  type="text"
+                  autoComplete="given-name"
+                  required
+                  className="contact-input"
+                />
+              </div>
+
+              {/* Last name */}
+              <div className="contact-field">
+                <label htmlFor="last-name" className="contact-label">
+                  Last name <sup>*</sup>
+                </label>
+                <input
+                  id="last-name"
+                  name="user_lastname"
+                  type="text"
+                  autoComplete="family-name"
+                  required
+                  className="contact-input"
+                />
+              </div>
+
+              {/* Company */}
+              <div className="contact-field contact-field--full">
+                <label htmlFor="company" className="contact-label">
+                  Company
+                </label>
+                <input
+                  id="company"
+                  name="user_company"
+                  type="text"
+                  autoComplete="organization"
+                  className="contact-input"
+                />
+              </div>
+
+              {/* Email */}
+              <div className="contact-field contact-field--full">
+                <label htmlFor="email" className="contact-label">
+                  Email <sup>*</sup>
+                </label>
+                <input
+                  id="email"
+                  name="user_email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="contact-input"
+                />
+              </div>
+
+              {/* Message */}
+              <div className="contact-field contact-field--full">
+                <label htmlFor="message" className="contact-label">
+                  Message <sup>*</sup>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  required
+                  className="contact-input contact-input--textarea"
+                />
+              </div>
+            </div>
+
             <button
               type="submit"
               disabled={isLoading}
-              className={`send flex items-center justify-center gap-2 w-full rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm ${
-                isLoading
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-indigo-600 hover:bg-indigo-500"
-              } focus:ring-1 focus:ring-[#1848a0]`}
+              className={`contact-submit ${isLoading ? "contact-submit--loading" : ""}`}
             >
               {isLoading ? (
                 <>
-                  <span className="spinner"></span>
+                  <span className="contact-spinner" />
                   Sending...
                 </>
               ) : (
-                "Let's Talk"
+                <>
+                  <span>Let's Talk</span>
+                  <span className="contact-submit__arrow">→</span>
+                </>
               )}
             </button>
-          </div>
-        </form>
+          </form>
+        )}
       </div>
     </div>
   );

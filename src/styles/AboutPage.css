@@ -1,70 +1,120 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&family=Roboto:wght@400;500&display=swap");
 
+/* ===============================
+   ABOUT PAGE WRAPPER
+================================ */
+.about-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(6rem, 12vh, 10rem) 1.5rem clamp(4rem, 8vh, 6rem);
+  min-height: 50vh;
+}
+
+/* ===============================
+   CARD
+================================ */
 .card-about-me {
-  width: 90%; /* Cambiado de 100% para evitar bordes pegados */
-  max-width: 50rem;
-  color: black;
-  padding: clamp(1rem, 4vw, 3rem);
-  text-align: justify;
-  font-size: clamp(1rem, 2vw, 1.3rem);
+  width: 90%;
+  max-width: 52rem;
+  color: #1a1a1a;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
   font-family: "Roboto", sans-serif;
-  border: 5px solid black;
-  border-radius: 15px;
+  line-height: 1.75;
+  border: 1.5px solid rgba(24, 72, 160, 0.25);
+  border-radius: 16px;
   box-sizing: border-box;
-  margin: clamp(1rem, 4vw, 100px) auto; /* Margen superior reducido en móviles */
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 4px 24px rgba(24, 72, 160, 0.06),
+    0 1px 0 rgba(24, 72, 160, 0.1) inset;
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle top accent line */
+.card-about-me::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #1848a0, #3a7bd5, transparent);
+  border-radius: 16px 16px 0 0;
 }
 
 .card-about-me:hover {
   transform: translateY(-6px);
-  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.25);
+  box-shadow:
+    0 16px 48px rgba(24, 72, 160, 0.12),
+    0 1px 0 rgba(24, 72, 160, 0.15) inset;
+  border-color: rgba(24, 72, 160, 0.4);
 }
 
+/* ===============================
+   TYPOGRAPHY
+================================ */
 .greeting {
-  font-size: clamp(2rem, 10vw, 7rem);
+  font-size: clamp(2.5rem, 10vw, 7rem);
   font-family: "Baloo 2", sans-serif;
   font-weight: 400;
+  color: #1a1a1a;
+  margin: 0 0 0.25rem;
+  line-height: 1;
   transition: transform 0.3s ease;
-  word-break: break-word; /* Evita desbordamiento de texto */
+  word-break: break-word;
 }
 
 .greeting:hover {
-  transform: scale(1.1);
+  transform: scale(1.04);
 }
 
 .name {
   font-family: "Baloo 2", sans-serif;
   font-size: clamp(1.8rem, 6vw, 4rem);
-  word-break: break-word; /* Evita desbordamiento */
+  word-break: break-word;
+  margin: 0.5rem 0 1.5rem;
+  color: #1a1a1a;
+  line-height: 1.15;
 }
 
 .S {
   background: linear-gradient(135deg, #1848a0, #3a7bd5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow:
-    -1px -1px 1px rgba(24, 72, 160, 0.4),
-    2px 2px 2px rgba(24, 72, 160, 0.4);
+  background-clip: text;
 }
 
-/* Ajuste fino en móviles muy pequeños */
+.about-bio {
+  color: #3a3635;
+  text-align: left;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  line-height: 1.8;
+  margin: 0;
+  border-left: 2px solid rgba(24, 72, 160, 0.2);
+  padding-left: 1.25rem;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
 @media (max-width: 480px) {
   .card-about-me {
-    text-align: center;
-    width: 95%; /* Más ancho en móviles pequeños */
-    padding: 1rem;
+    width: 95%;
+    padding: 1.5rem 1.25rem;
   }
 
-  .greeting {
-    font-size: clamp(1.8rem, 12vw, 4rem); /* Tamaño ajustado para móviles */
-  }
-}
-
-/* Para tablets */
-@media (min-width: 481px) and (max-width: 768px) {
-  .card-about-me {
-    width: 92%;
+  .about-bio {
+    text-align: left;
+    padding-left: 0.75rem;
   }
 }

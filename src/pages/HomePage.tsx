@@ -8,11 +8,26 @@ import Footer from "../components/Footer";
 const HomePage = () => {
   return (
     <>
-      <Header />
-      <AboutMe />
-      <Skills />
-      <ProjectsPage />
-      <ContactPage />
+      <section id="home">
+        <Header />
+      </section>
+
+      <section id="about">
+        <AboutMe />
+      </section>
+
+      <section id="skills">
+        <Skills />
+      </section>
+
+      <section id="projects">
+        <ProjectsPage />
+      </section>
+
+      <section id="contact">
+        <ContactPage />
+      </section>
+
       <Footer />
     </>
   );

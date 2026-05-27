@@ -13,21 +13,6 @@
 }
 
 /* ===============================
-   CONTENEDOR DE IMAGEN
-================================ */
-.image-wrapper {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  width: fit-content;
-  height: fit-content;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-/* ===============================
    IMAGEN
 ================================ */
 .imageFrontened {
@@ -40,16 +25,149 @@
   border-radius: 18px;
   transition:
     filter 0.6s ease,
-    border-radius 0.6s ease,
     transform 0.6s ease;
 }
 
 .imageFrontened:hover {
-  filter: brightness(1.05) contrast(1.05);
-  border-radius: 25px;
-  transform: scale(1.02);
+  filter: brightness(1.04) contrast(1.04);
+  transform: scale(1.015);
 }
 
+/* ===============================
+   HUD OVERLAYS
+================================ */
+.header-hud {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  opacity: 0;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+  pointer-events: none;
+  font-family: "Courier New", "Consolas", monospace;
+}
+
+.header-hud--visible {
+  opacity: 1;
+}
+
+/* Top-left */
+.header-hud--tl {
+  top: clamp(80px, 10vh, 120px);
+  left: clamp(1rem, 4vw, 4rem);
+  transform: translateX(-10px);
+  align-items: flex-start;
+}
+.header-hud--tl.header-hud--visible {
+  transform: translateX(0);
+}
+
+/* Bottom-right */
+.header-hud--br {
+  bottom: clamp(80px, 12vh, 130px);
+  right: clamp(1rem, 4vw, 4rem);
+  transform: translateX(10px);
+  align-items: flex-end;
+  text-align: right;
+}
+.header-hud--br.header-hud--visible {
+  transform: translateX(0);
+}
+
+.header-hud__label {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: rgba(24, 72, 160, 0.55);
+  text-transform: uppercase;
+}
+
+.header-hud__value {
+  font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+  font-weight: 700;
+  color: #1848a0;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-hud__value--available {
+  color: #1a8c4e;
+}
+
+.header-hud__dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #1a8c4e;
+  border-radius: 50%;
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(26, 140, 78, 0.4);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 0 5px rgba(26, 140, 78, 0);
+  }
+}
+
+/* ===============================
+   NAME TAG — bottom center
+================================ */
+.header-nametag {
+  position: absolute;
+  bottom: clamp(70px, 10vh, 110px);
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  transition:
+    opacity 0.7s ease 0.3s,
+    transform 0.7s ease 0.3s;
+  pointer-events: none;
+}
+
+.header-nametag--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.header-nametag__name {
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.8rem, 1.8vw, 1.05rem);
+  font-weight: 700;
+  color: #1848a0;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  padding: 4px 14px;
+  border: 1px solid rgba(24, 72, 160, 0.2);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.header-nametag__sub {
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.6rem, 1.2vw, 0.72rem);
+  color: rgba(24, 72, 160, 0.6);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ===============================
+   SCROLL INDICATOR
+================================ */
 .scroll-indicator {
   position: absolute;
   bottom: clamp(1rem, 2dvh, 3rem);
@@ -86,7 +204,6 @@
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
   width: 12px;
   height: 12px;
   border-right: 2px solid #1648a1;
@@ -122,45 +239,30 @@
 }
 
 /* ===============================
-   MÓVILES
+   RESPONSIVE
 ================================ */
 @media (max-width: 768px) {
   .imageFrontened {
     width: 100%;
-    max-height: 95vh;
+    max-height: 95dvh;
     border-radius: 16px;
   }
-  .scroll-indicator {
-    bottom: clamp(1rem, 3dvh, 2rem);
+
+  /* Hide HUDs on small screens — too cramped */
+  .header-hud--tl,
+  .header-hud--br {
+    display: none;
   }
 
-  .scroll-indicator::before {
-    width: 1.5px;
-    height: 50px;
-  }
-
-  .scroll-indicator::after {
-    width: 10px;
-    height: 10px;
+  .header-nametag__name {
+    font-size: 0.7rem;
+    padding: 3px 10px;
   }
 }
 
-/* ===============================
-   PANTALLAS GRANDES
-================================ */
 @media (min-width: 1440px) {
   .imageFrontened {
     max-width: 90%;
     max-height: 90vh;
-  }
-  .scroll-indicator::before {
-    width: 2.5px;
-    height: 65px;
-  }
-
-  .scroll-indicator::after {
-    width: 14px;
-    height: 14px;
-    border-width: 3px;
   }
 }

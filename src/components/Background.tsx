@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
 
 export default function ScannerBackground() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -20,23 +20,30 @@ export default function ScannerBackground() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Generate data points
-  const dataPoints = Array.from({ length: 60 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 1600,
-    y: Math.random() * 900,
-    size: Math.random() * 2 + 1.5,
-    delay: Math.random() * 3,
-    speed: Math.random() * 2 + 1,
-    type: Math.floor(Math.random() * 3),
-  }));
+  // ✅ Memoized — generated once, not on every mouse move
+  const dataPoints = useMemo(
+    () =>
+      Array.from({ length: 60 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 1600,
+        y: Math.random() * 900,
+        size: Math.random() * 2 + 1.5,
+        delay: Math.random() * 3,
+        speed: Math.random() * 2 + 1,
+        type: Math.floor(Math.random() * 3),
+      })),
+    [],
+  );
 
-  // Grid lines for radar effect
-  const gridLines = Array.from({ length: 6 }, (_, i) => ({
-    id: i,
-    radius: (i + 1) * 120,
-    delay: i * 0.2,
-  }));
+  const gridLines = useMemo(
+    () =>
+      Array.from({ length: 6 }, (_, i) => ({
+        id: i,
+        radius: (i + 1) * 120,
+        delay: i * 0.2,
+      })),
+    [],
+  );
 
   return (
     <motion.svg
@@ -46,7 +53,6 @@ export default function ScannerBackground() {
       className="fixed inset-0 -z-10 w-full h-full opacity-45"
     >
       <defs>
-        {/* Gradients for light effects */}
         <radialGradient id="scannerGlow" cx="0.5" cy="0.5" r="0.5">
           <stop offset="0%" stopColor="#1549A5" stopOpacity="0.7" />
           <stop offset="50%" stopColor="#1549A5" stopOpacity="0.3" />
@@ -85,7 +91,6 @@ export default function ScannerBackground() {
         </pattern>
       </defs>
 
-      {/* Transparent background with subtle grid */}
       <rect width="100%" height="100%" fill="transparent" />
       <rect width="100%" height="100%" fill="url(#grid)" />
 
@@ -140,22 +145,14 @@ export default function ScannerBackground() {
         fill="none"
         filter="url(#glow)"
         animate={{ r: [80, 750, 80] }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeOut",
-        }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeOut" }}
       />
 
-      {/* Rotating scanner beam */}
+      {/* ✅ Rotating scanner beam — fixed transform-origin for SVG */}
       <motion.g
         animate={{ rotate: [0, 360] }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-        transform-origin="800 450"
+        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+        style={{ originX: "800px", originY: "450px" }}
       >
         <motion.path
           d="M 800 450 L 1350 450"
@@ -164,11 +161,7 @@ export default function ScannerBackground() {
           strokeLinecap="round"
           filter="url(#glow)"
           animate={{ opacity: [0, 0.9, 0] }}
-          transition={{
-            duration: 0.4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          transition={{ duration: 0.4, repeat: Infinity, ease: "easeInOut" }}
         />
       </motion.g>
 
@@ -181,10 +174,7 @@ export default function ScannerBackground() {
             r={point.size}
             fill="#1549A5"
             filter="url(#glow)"
-            animate={{
-              opacity: [0.2, 0.8, 0.2],
-              scale: [0.7, 1.4, 0.7],
-            }}
+            animate={{ opacity: [0.2, 0.8, 0.2], scale: [0.7, 1.4, 0.7] }}
             transition={{
               duration: point.speed * 2,
               repeat: Infinity,
@@ -192,8 +182,6 @@ export default function ScannerBackground() {
               ease: "easeInOut",
             }}
           />
-
-          {/* Pulse rings for some points */}
           {point.type === 0 && (
             <motion.circle
               cx={point.x}
@@ -238,7 +226,7 @@ export default function ScannerBackground() {
         />
       ))}
 
-      {/* Wave effect centered on mouse */}
+      {/* Wave effect on mouse */}
       {!isNaN(mousePosition.x) && !isNaN(mousePosition.y) && (
         <motion.circle
           cx={mousePosition.x}
@@ -252,7 +240,7 @@ export default function ScannerBackground() {
         />
       )}
 
-      {/* HUD style diagnostic text */}
+      {/* HUD text */}
       <motion.text
         x="100"
         y="100"
@@ -260,20 +248,17 @@ export default function ScannerBackground() {
         fontSize="16"
         fontFamily="'Courier New', monospace"
         fontWeight="bold"
-        opacity="0.7"
         animate={{ opacity: [0.4, 0.8, 0.4] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
         SYSTEM ONLINE
       </motion.text>
-
       <motion.text
         x="100"
         y="125"
         fill="#1549A5"
         fontSize="14"
         fontFamily="'Courier New', monospace"
-        opacity="0.6"
         animate={{ opacity: [0.3, 0.7, 0.3] }}
         transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
       >
@@ -289,7 +274,6 @@ export default function ScannerBackground() {
           width="12"
           height={i * 18 + 12}
           fill="#1549A5"
-          opacity="0.7"
           animate={{ opacity: [0.3, 0.8, 0.3] }}
           transition={{
             duration: 1.2,
@@ -300,7 +284,7 @@ export default function ScannerBackground() {
         />
       ))}
 
-      {/* Simple corner markers */}
+      {/* Corner markers */}
       <path
         d="M 60 60 L 90 60 L 90 90 L 60 90"
         fill="none"
