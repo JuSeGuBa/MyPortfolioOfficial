@@ -52,6 +52,7 @@
   height: 500px;
   border-radius: 12px;
   transition: transform 0.4s ease;
+  position: relative;
 }
 
 .projects-carousel:hover {
@@ -195,6 +196,12 @@
   .info {
     font-size: 0.9rem;
     padding: 0 0.5rem;
+    /* Trunca descripciones largas para que no se corten
+       contra el borde del carousel en pantallas chicas */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .buttons-links {
@@ -219,6 +226,7 @@
 
   .info {
     font-size: 0.82rem;
+    -webkit-line-clamp: 3;
   }
 
   /* Stack buttons vertically on very small screens */
